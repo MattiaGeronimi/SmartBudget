@@ -4,7 +4,8 @@
  */
 package balatti_geronimi_javagui;
 
-import javax.swing.JComponent;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 
 /**
  *
@@ -17,6 +18,8 @@ public class frmProva extends javax.swing.JFrame {
      */
     public frmProva() {
         initComponents();
+        this.pack();
+        RegistraFont();
     }
 
     /**
@@ -28,102 +31,90 @@ public class frmProva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlLogin = new javax.swing.JPanel();
-        pnlNome = new javax.swing.JPanel();
-        txtNome = new javax.swing.JTextField();
         pnlWelcome = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        roundTextField1 = new balatti_geronimi_javagui.RoundTextField();
-        roundButton1 = new balatti_geronimi_javagui.RoundButton();
+        gradientPanel1 = new balatti_geronimi_javagui.GradientPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        roundTextField2 = new balatti_geronimi_javagui.RoundTextField();
+        imageLabel1 = new balatti_geronimi_javagui.ImageLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(420, 800));
+        setMinimumSize(new java.awt.Dimension(420, 800));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        pnlLogin.setPreferredSize(new java.awt.Dimension(600, 800));
+        pnlWelcome.setBackground(java.awt.Color.white);
+        pnlWelcome.setMaximumSize(new java.awt.Dimension(420, 800));
+        pnlWelcome.setMinimumSize(new java.awt.Dimension(420, 800));
+        pnlWelcome.setPreferredSize(new java.awt.Dimension(420, 800));
+        pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlNome.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14), java.awt.Color.gray)); // NOI18N
-        pnlNome.setLayout(new java.awt.GridLayout());
+        gradientPanel1.setBackground(java.awt.Color.white);
+        gradientPanel1.setColore1(java.awt.Color.white);
+        gradientPanel1.setColore2(PaletteColori.VERDE);
 
-        txtNome.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        txtNome.setForeground(java.awt.Color.lightGray);
-        txtNome.setText("Gabriele");
-        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.white, 10));
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
-        pnlNome.add(txtNome);
-
-        javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
-        pnlLogin.setLayout(pnlLoginLayout);
-        pnlLoginLayout.setHorizontalGroup(
-            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
-                .addContainerGap(279, Short.MAX_VALUE)
-                .addComponent(pnlNome, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+        javax.swing.GroupLayout gradientPanel1Layout = new javax.swing.GroupLayout(gradientPanel1);
+        gradientPanel1.setLayout(gradientPanel1Layout);
+        gradientPanel1Layout.setHorizontalGroup(
+            gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
-        pnlLoginLayout.setVerticalGroup(
-            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLoginLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(pnlNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(690, Short.MAX_VALUE))
+        gradientPanel1Layout.setVerticalGroup(
+            gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pnlLogin, "card2");
+        pnlWelcome.add(gradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 420, 400));
 
-        pnlWelcome.setPreferredSize(new java.awt.Dimension(600, 800));
+        jLabel2.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 24));
+        jLabel2.setForeground(new java.awt.Color(25, 45, 98));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Benvenuto!");
+        jLabel2.setAlignmentX(0.5F);
+        jLabel2.setPreferredSize(new java.awt.Dimension(37, 50));
+        pnlWelcome.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 420, 40));
 
-        jLabel1.setText("jLabel1");
-
-        roundTextField1.setBackground(java.awt.Color.red);
-        roundTextField1.setText("roundTextField1");
-
-        roundButton1.setText("roundButton1");
-
-        javax.swing.GroupLayout pnlWelcomeLayout = new javax.swing.GroupLayout(pnlWelcome);
-        pnlWelcome.setLayout(pnlWelcomeLayout);
-        pnlWelcomeLayout.setHorizontalGroup(
-            pnlWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlWelcomeLayout.createSequentialGroup()
-                .addGroup(pnlWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlWelcomeLayout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(roundButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlWelcomeLayout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(roundTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(288, 288, 288))
+        jLabel3.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 14)
         );
-        pnlWelcomeLayout.setVerticalGroup(
-            pnlWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlWelcomeLayout.createSequentialGroup()
-                .addGroup(pnlWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlWelcomeLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlWelcomeLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(roundButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addComponent(roundTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(555, Short.MAX_VALUE))
-        );
+        jLabel3.setForeground(new java.awt.Color(25, 45, 98));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Effettua il login o registrati");
+        jLabel3.setAlignmentX(0.5F);
+        jLabel3.setPreferredSize(new java.awt.Dimension(37, 50));
+        pnlWelcome.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 420, -1));
+
+        roundTextField2.setEditable(false);
+        roundTextField2.setBackground(java.awt.Color.white);
+        roundTextField2.setColoreBordo(new java.awt.Color(25, 45, 98));
+        roundTextField2.setDisabledTextColor(new java.awt.Color(25, 45, 98));
+        roundTextField2.setFocusable(false);
+        roundTextField2.setRaggio(30);
+        pnlWelcome.add(roundTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 260, 70));
+
+        imageLabel1.setImmagine("C:\\Users\\gabri\\OneDrive\\Documenti\\NetBeansProjects\\Balatti_Geronimi_JavaGUI\\src\\immagini\\logo.png");
+        pnlWelcome.add(imageLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 480, 360));
 
         getContentPane().add(pnlWelcome, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
 
-
+    public void RegistraFont() {
+    try {
+    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, 
+        getClass().getResourceAsStream("/fonts/Montserrat-Regular.ttf")));
+    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, 
+        getClass().getResourceAsStream("/fonts/Montserrat-Bold.ttf")));
+    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, 
+        getClass().getResourceAsStream("/fonts/Montserrat-SemiBold.ttf")));
+} catch (Exception e) {
+    e.printStackTrace();
+}
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -161,12 +152,11 @@ public class frmProva extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel pnlLogin;
-    private javax.swing.JPanel pnlNome;
+    private balatti_geronimi_javagui.GradientPanel gradientPanel1;
+    private balatti_geronimi_javagui.ImageLabel imageLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel pnlWelcome;
-    private balatti_geronimi_javagui.RoundButton roundButton1;
-    private balatti_geronimi_javagui.RoundTextField roundTextField1;
-    private javax.swing.JTextField txtNome;
+    private balatti_geronimi_javagui.RoundTextField roundTextField2;
     // End of variables declaration//GEN-END:variables
 }
