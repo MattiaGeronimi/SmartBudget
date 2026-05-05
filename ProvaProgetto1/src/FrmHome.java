@@ -4,6 +4,7 @@
  */
 import javax.swing.*;
 import java.awt.*;
+
 /**
  *
  * @author matge
@@ -13,30 +14,84 @@ public class FrmHome extends javax.swing.JFrame {
     /**
      * Creates new form FrmHome
      */
+    
+    //Colore primario darkmode
+    public Color darkColor = new Color(14,17,17);
+    
+    //Colore primario lightmode
+    public Color lightColor = new Color(250, 249, 246);
+    
+    //Colore secondario
+    public Color secondaryColor = new Color(44,128,100);
+    
+    //Icona menu chiara
+    ImageIcon menuIconLight = new ImageIcon(getClass().getResource("/resources/MenuIconLight.png"));
+    Image menuIconScaledLight = menuIconLight.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+    //Icona menu scura
+    ImageIcon menuIconDark = new ImageIcon(getClass().getResource("/resources/MenuIconDark.png"));
+    Image menuIconScaledDark = menuIconDark.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+    
     public FrmHome() 
     {
         initComponents();
-        getContentPane().setBackground(Color.DARK_GRAY);
         this.pack();
-        setTitle("Gestore Spese");
-        PnlLayer.setLayout(null);
-       
+        setTitle("SmartBudget");
+        
         //Bottone Menu
         BtnMenu.setFocusPainted(false);
         BtnMenu.setBorderPainted(false);
         BtnMenu.setContentAreaFilled(false);
-        BtnMenu.setOpaque(false);
-        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/main-menu.png"));
-        Image img = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(img);
-        BtnMenu.setIcon(scaledIcon);
+        BtnMenu.setOpaque(false);      
+        BtnMenu.setIcon(new ImageIcon(menuIconScaledLight));
         
         //Pannello menu
-        menu.setBounds(0, 100, 200, 700);
+        menu.setBounds(-200, 100, 200, 700);
         menu.setVisible(false);
-        PnlLayer.add(menu, Integer.valueOf(3));
+        PnlLayer.add(menu, Integer.valueOf(1));
+        menu.setFrame(this);
     }
-
+    
+    public void colorMode()
+    {
+        if(tema == ColorMode.CHIARO)
+        {
+            PnlBottomMenu.setBackground(lightColor);
+            PnlHeader.setBackground(lightColor);
+            PnlGradient.setColore1(lightColor);
+            menu.setBackground(lightColor);
+            menu.setLabelsColor(darkColor);
+            jLabel1.setForeground(darkColor);
+            BtnMenu.setIcon(new ImageIcon(menuIconScaledDark));
+        }
+        else
+        {
+            PnlBottomMenu.setBackground(darkColor);
+            PnlHeader.setBackground(darkColor);
+            PnlGradient.setColore1(darkColor);
+            menu.setBackground(darkColor);
+            menu.setLabelsColor(lightColor);
+            jLabel1.setForeground(lightColor);
+            BtnMenu.setIcon(new ImageIcon(menuIconScaledLight));
+        }
+        
+    }
+    
+    public void setTema()
+    {
+        if(tema == ColorMode.SCURO)
+        {
+            tema = ColorMode.CHIARO;
+        }
+        else
+        {
+            tema = ColorMode.SCURO;
+        }
+    }
+    public ColorMode getTema()
+    {
+        return tema;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,17 +106,15 @@ public class FrmHome extends javax.swing.JFrame {
         PnlContenuto = new javax.swing.JPanel();
         PnlHeader = new javax.swing.JPanel();
         BtnMenu = new javax.swing.JButton();
+        PnlBottomMenu = new javax.swing.JPanel();
+        PnlGradient = new GradientPanel();
         PnlSaldo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        PnlBottomMenu = new javax.swing.JPanel();
-        PnlTransazioni = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.darkGray);
         setMaximumSize(new java.awt.Dimension(420, 1000));
         setMinimumSize(new java.awt.Dimension(420, 800));
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(420, 800));
         setResizable(false);
 
         PnlFinestra.setMaximumSize(new java.awt.Dimension(420, 800));
@@ -71,7 +124,6 @@ public class FrmHome extends javax.swing.JFrame {
 
         PnlLayer.setMaximumSize(new java.awt.Dimension(420, 800));
         PnlLayer.setMinimumSize(new java.awt.Dimension(420, 800));
-        PnlLayer.setPreferredSize(new java.awt.Dimension(420, 800));
 
         PnlContenuto.setBackground(java.awt.Color.darkGray);
         PnlContenuto.setMaximumSize(new java.awt.Dimension(420, 800));
@@ -79,9 +131,10 @@ public class FrmHome extends javax.swing.JFrame {
         PnlContenuto.setOpaque(false);
         PnlContenuto.setPreferredSize(new java.awt.Dimension(420, 800));
 
-        PnlHeader.setBackground(new java.awt.Color(51, 51, 51));
+        PnlHeader.setBackground(new java.awt.Color(14, 17, 17));
         PnlHeader.setMaximumSize(new java.awt.Dimension(420, 100));
         PnlHeader.setMinimumSize(new java.awt.Dimension(420, 100));
+        PnlHeader.setPreferredSize(new java.awt.Dimension(420, 100));
 
         BtnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnMenu.setMaximumSize(new java.awt.Dimension(100, 100));
@@ -106,23 +159,7 @@ public class FrmHome extends javax.swing.JFrame {
             .addComponent(BtnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        PnlSaldo.setBackground(java.awt.Color.darkGray);
-        PnlSaldo.setMaximumSize(new java.awt.Dimension(420, 200));
-        PnlSaldo.setMinimumSize(new java.awt.Dimension(420, 200));
-        PnlSaldo.setPreferredSize(new java.awt.Dimension(420, 200));
-        PnlSaldo.setLayout(new java.awt.GridBagLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.white);
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("0,00€");
-        jLabel1.setMaximumSize(new java.awt.Dimension(250, 100));
-        jLabel1.setMinimumSize(new java.awt.Dimension(250, 100));
-        jLabel1.setPreferredSize(new java.awt.Dimension(250, 100));
-        jLabel1.setRequestFocusEnabled(false);
-        PnlSaldo.add(jLabel1, new java.awt.GridBagConstraints());
-
-        PnlBottomMenu.setBackground(new java.awt.Color(255, 255, 0));
+        PnlBottomMenu.setBackground(new java.awt.Color(14, 17, 17));
         PnlBottomMenu.setMaximumSize(new java.awt.Dimension(420, 100));
         PnlBottomMenu.setMinimumSize(new java.awt.Dimension(420, 100));
         PnlBottomMenu.setPreferredSize(new java.awt.Dimension(420, 100));
@@ -138,32 +175,51 @@ public class FrmHome extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        PnlTransazioni.setBackground(java.awt.Color.darkGray);
-        PnlTransazioni.setMaximumSize(new java.awt.Dimension(420, 382));
-        PnlTransazioni.setMinimumSize(new java.awt.Dimension(420, 382));
-        PnlTransazioni.setPreferredSize(new java.awt.Dimension(420, 382));
+        PnlGradient.setColore1(new java.awt.Color(14, 17, 17));
+        PnlGradient.setColore2(new java.awt.Color(44, 128, 100));
+        PnlGradient.setMaximumSize(new java.awt.Dimension(420, 600));
+        PnlGradient.setMinimumSize(new java.awt.Dimension(420, 600));
+        PnlGradient.setPreferredSize(new java.awt.Dimension(420, 600));
 
-        javax.swing.GroupLayout PnlTransazioniLayout = new javax.swing.GroupLayout(PnlTransazioni);
-        PnlTransazioni.setLayout(PnlTransazioniLayout);
-        PnlTransazioniLayout.setHorizontalGroup(
-            PnlTransazioniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        PnlSaldo.setBackground(java.awt.Color.black);
+        PnlSaldo.setMaximumSize(new java.awt.Dimension(420, 200));
+        PnlSaldo.setMinimumSize(new java.awt.Dimension(420, 200));
+        PnlSaldo.setOpaque(false);
+        PnlSaldo.setPreferredSize(new java.awt.Dimension(420, 200));
+        PnlSaldo.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.white);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("0,00€");
+        jLabel1.setMaximumSize(new java.awt.Dimension(250, 100));
+        jLabel1.setMinimumSize(new java.awt.Dimension(250, 100));
+        jLabel1.setPreferredSize(new java.awt.Dimension(250, 100));
+        jLabel1.setRequestFocusEnabled(false);
+        PnlSaldo.add(jLabel1, new java.awt.GridBagConstraints());
+
+        javax.swing.GroupLayout PnlGradientLayout = new javax.swing.GroupLayout(PnlGradient);
+        PnlGradient.setLayout(PnlGradientLayout);
+        PnlGradientLayout.setHorizontalGroup(
+            PnlGradientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PnlSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
         );
-        PnlTransazioniLayout.setVerticalGroup(
-            PnlTransazioniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+        PnlGradientLayout.setVerticalGroup(
+            PnlGradientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlGradientLayout.createSequentialGroup()
+                .addComponent(PnlSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 400, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PnlContenutoLayout = new javax.swing.GroupLayout(PnlContenuto);
         PnlContenuto.setLayout(PnlContenutoLayout);
         PnlContenutoLayout.setHorizontalGroup(
             PnlContenutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PnlContenutoLayout.createSequentialGroup()
-                .addGroup(PnlContenutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PnlSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PnlTransazioni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnlContenutoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnlContenutoLayout.createSequentialGroup()
+                .addGroup(PnlContenutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PnlGradient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PnlHeader, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PnlContenutoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(PnlBottomMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -172,11 +228,9 @@ public class FrmHome extends javax.swing.JFrame {
             PnlContenutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlContenutoLayout.createSequentialGroup()
                 .addComponent(PnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PnlSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PnlTransazioni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
+                .addComponent(PnlGradient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(PnlBottomMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -221,11 +275,42 @@ public class FrmHome extends javax.swing.JFrame {
     private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuActionPerformed
         if(menu.isVisible())
         {
-            menu.setVisible(false);
+            
+            Timer closeTimer = new Timer(5, null);
+            BtnMenu.setEnabled(false);
+            closeTimer.addActionListener(e -> {
+                int x = menu.getX();
+
+                if (x > -200) {
+                    menu.setLocation(x - 10, menu.getY());
+                } else {
+                    menu.setLocation(-200, menu.getY());
+                    closeTimer.stop();
+                    menu.setVisible(false);
+                    BtnMenu.setEnabled(true);
+                }
+            });
+            
+            closeTimer.start();
         }
         else
         {
             menu.setVisible(true);
+            Timer openTimer = new Timer(5, null);
+            BtnMenu.setEnabled(false);
+            openTimer.addActionListener(e -> 
+            {
+                int x = menu.getX();
+
+                if (x < 0) {
+                    menu.setLocation(x + 10, menu.getY());
+                } else {
+                    menu.setLocation(0, menu.getY());
+                    BtnMenu.setEnabled(true);
+                    openTimer.stop();
+                }
+            });
+            openTimer.start();
         }
         
     }//GEN-LAST:event_BtnMenuActionPerformed
@@ -256,24 +341,27 @@ public class FrmHome extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmHome().setVisible(true);
+                
             }
         });
     }
+    
+    private ColorMode tema = ColorMode.SCURO;
     private PnlMenu menu = new PnlMenu(); 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnMenu;
     private javax.swing.JPanel PnlBottomMenu;
     private javax.swing.JPanel PnlContenuto;
     private javax.swing.JPanel PnlFinestra;
+    private GradientPanel PnlGradient;
     private javax.swing.JPanel PnlHeader;
     private javax.swing.JLayeredPane PnlLayer;
     private javax.swing.JPanel PnlSaldo;
-    private javax.swing.JPanel PnlTransazioni;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
