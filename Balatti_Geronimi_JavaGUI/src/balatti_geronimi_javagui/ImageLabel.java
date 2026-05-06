@@ -31,7 +31,8 @@ public class ImageLabel extends JLabel {
 
     public void setImmagine(String percorso) {
         this.percorso = percorso;
-        this.immagine = new ImageIcon(percorso).getImage();
+        ImageIcon icon = new ImageIcon(getClass().getResource(percorso));
+        this.immagine = icon.getImage();
         repaint();
     }
 

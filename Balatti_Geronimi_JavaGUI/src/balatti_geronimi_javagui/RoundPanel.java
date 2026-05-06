@@ -30,7 +30,7 @@ public class RoundPanel extends JPanel{
         Graphics2D graficaPanel = (Graphics2D) g.create();
         graficaPanel.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graficaPanel.setColor(getBackground());
-        graficaPanel.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, raggio, raggio);
+        graficaPanel.fillRoundRect(1, 1, getWidth() - 2, getHeight() - 2, raggio, raggio);
         graficaPanel.dispose();
         super.paintComponent(g);
     }
@@ -40,7 +40,7 @@ public class RoundPanel extends JPanel{
         Graphics2D graficaPanel = (Graphics2D) g.create();
         graficaPanel.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graficaPanel.setColor(coloreBordo);
-        graficaPanel.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, raggio, raggio);
+        graficaPanel.drawRoundRect(1, 1, getWidth() - 3, getHeight() - 3, raggio, raggio);
         graficaPanel.dispose();
     }
 

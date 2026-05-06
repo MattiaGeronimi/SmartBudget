@@ -4,8 +4,11 @@
  */
 package balatti_geronimi_javagui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.net.URL;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -13,13 +16,17 @@ import java.awt.GraphicsEnvironment;
  */
 public class frmProva extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmProva
-     */
+    java.awt.CardLayout cardLayout1 = null;
+    
     public frmProva() {
         initComponents();
         this.pack();
         RegistraFont();
+        URL iconURL = getClass().getResource("/immagini/icona.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
+        cardLayout1 = (java.awt.CardLayout) getContentPane().getLayout();
+        cardLayout1.show(getContentPane(), "Welcome");
     }
 
     /**
@@ -33,10 +40,20 @@ public class frmProva extends javax.swing.JFrame {
 
         pnlWelcome = new javax.swing.JPanel();
         gradientPanel1 = new balatti_geronimi_javagui.GradientPanel();
+        jPanel1 = new javax.swing.JPanel();
+        roundButton1 = new balatti_geronimi_javagui.RoundButton();
+        roundButton2 = new balatti_geronimi_javagui.RoundButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        imageLabel1 = new balatti_geronimi_javagui.ImageLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        roundTextField2 = new balatti_geronimi_javagui.RoundTextField();
-        imageLabel1 = new balatti_geronimi_javagui.ImageLabel();
+        pnlRegistrati = new javax.swing.JPanel();
+        gradientPanel2 = new balatti_geronimi_javagui.GradientPanel();
+        jPanel2 = new javax.swing.JPanel();
+        roundButton3 = new balatti_geronimi_javagui.RoundButton();
+        roundButton4 = new balatti_geronimi_javagui.RoundButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        imageLabel2 = new balatti_geronimi_javagui.ImageLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(420, 800));
@@ -53,68 +70,233 @@ public class frmProva extends javax.swing.JFrame {
         gradientPanel1.setBackground(java.awt.Color.white);
         gradientPanel1.setColore1(java.awt.Color.white);
         gradientPanel1.setColore2(PaletteColori.VERDE);
+        gradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout gradientPanel1Layout = new javax.swing.GroupLayout(gradientPanel1);
-        gradientPanel1.setLayout(gradientPanel1Layout);
-        gradientPanel1Layout.setHorizontalGroup(
-            gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 40, 20));
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new java.awt.GridLayout(0, 1, 0, 20));
+
+        roundButton1.setForeground(PaletteColori.BLU);
+        roundButton1.setText("Registrati");
+        roundButton1.setBorderPainted(true);
+        roundButton1.setColoreBordo(java.awt.Color.white);
+        roundButton1.setColoreHover(PaletteColori.BLU);
+        roundButton1.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
         );
-        gradientPanel1Layout.setVerticalGroup(
-            gradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        roundButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        roundButton1.setRaggio(40);
+        roundButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                roundButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                roundButton1MouseExited(evt);
+            }
+        });
+        roundButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roundButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(roundButton1);
+
+        roundButton2.setForeground(PaletteColori.BLU);
+        roundButton2.setText("Login");
+        roundButton2.setColoreBordo(java.awt.Color.white);
+        roundButton2.setColoreHover(PaletteColori.BLU);
+        roundButton2.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
         );
+        roundButton2.setRaggio(40);
+        roundButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                roundButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                roundButton2MouseExited(evt);
+            }
+        });
+        roundButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roundButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(roundButton2);
+
+        gradientPanel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 420, 170));
 
         pnlWelcome.add(gradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 420, 400));
 
-        jLabel2.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 24));
+        jSeparator1.setForeground(PaletteColori.BLU);
+        pnlWelcome.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 330, 40));
+
+        imageLabel1.setImmagine("/immagini/logo.png");
+        pnlWelcome.add(imageLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 480, 360));
+
+        jLabel2.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 40));
         jLabel2.setForeground(new java.awt.Color(25, 45, 98));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Benvenuto!");
         jLabel2.setAlignmentX(0.5F);
         jLabel2.setPreferredSize(new java.awt.Dimension(37, 50));
-        pnlWelcome.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 420, 40));
+        pnlWelcome.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 420, 40));
 
-        jLabel3.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 14)
+        jLabel3.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 16)
         );
         jLabel3.setForeground(new java.awt.Color(25, 45, 98));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Effettua il login o registrati");
         jLabel3.setAlignmentX(0.5F);
         jLabel3.setPreferredSize(new java.awt.Dimension(37, 50));
-        pnlWelcome.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 420, -1));
+        pnlWelcome.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 420, -1));
 
-        roundTextField2.setEditable(false);
-        roundTextField2.setBackground(java.awt.Color.white);
-        roundTextField2.setColoreBordo(new java.awt.Color(25, 45, 98));
-        roundTextField2.setDisabledTextColor(new java.awt.Color(25, 45, 98));
-        roundTextField2.setFocusable(false);
-        roundTextField2.setRaggio(30);
-        pnlWelcome.add(roundTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 260, 70));
+        getContentPane().add(pnlWelcome, "Welcome");
 
-        imageLabel1.setImmagine("C:\\Users\\gabri\\OneDrive\\Documenti\\NetBeansProjects\\Balatti_Geronimi_JavaGUI\\src\\immagini\\logo.png");
-        pnlWelcome.add(imageLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 480, 360));
+        pnlRegistrati.setBackground(java.awt.Color.white);
+        pnlRegistrati.setMaximumSize(new java.awt.Dimension(420, 800));
+        pnlRegistrati.setMinimumSize(new java.awt.Dimension(420, 800));
+        pnlRegistrati.setPreferredSize(new java.awt.Dimension(420, 800));
+        pnlRegistrati.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(pnlWelcome, "card2");
+        gradientPanel2.setBackground(java.awt.Color.white);
+        gradientPanel2.setColore1(java.awt.Color.white);
+        gradientPanel2.setColore2(PaletteColori.VERDE);
+        gradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 40, 20));
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new java.awt.GridLayout(0, 1, 0, 20));
+
+        roundButton3.setForeground(PaletteColori.BLU);
+        roundButton3.setText("Registrati");
+        roundButton3.setBorderPainted(true);
+        roundButton3.setColoreBordo(java.awt.Color.white);
+        roundButton3.setColoreHover(PaletteColori.BLU);
+        roundButton3.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
+        );
+        roundButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        roundButton3.setRaggio(40);
+        roundButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                roundButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                roundButton3MouseExited(evt);
+            }
+        });
+        roundButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roundButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(roundButton3);
+
+        roundButton4.setForeground(PaletteColori.BLU);
+        roundButton4.setText("Login");
+        roundButton4.setColoreBordo(java.awt.Color.white);
+        roundButton4.setColoreHover(PaletteColori.BLU);
+        roundButton4.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
+        );
+        roundButton4.setRaggio(40);
+        roundButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                roundButton4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                roundButton4MouseExited(evt);
+            }
+        });
+        roundButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roundButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(roundButton4);
+
+        gradientPanel2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 420, 170));
+
+        pnlRegistrati.add(gradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 420, 400));
+
+        jSeparator2.setForeground(PaletteColori.BLU);
+        pnlRegistrati.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 330, 40));
+
+        imageLabel2.setImmagine("/immagini/logo.png");
+        pnlRegistrati.add(imageLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 480, 360));
+
+        getContentPane().add(pnlRegistrati, "Registrati");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void roundButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton1ActionPerformed
+        cardLayout1.show(getContentPane(), "Registrati");
+    }//GEN-LAST:event_roundButton1ActionPerformed
+
+    private void roundButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton1MouseEntered
+        RoundButton bottone = (RoundButton) evt.getSource();
+        bottone.setColoreBordo(PaletteColori.BLU);
+        bottone.setForeground(Color.WHITE);
+    }//GEN-LAST:event_roundButton1MouseEntered
+
+    private void roundButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton1MouseExited
+        RoundButton bottone = (RoundButton) evt.getSource();
+        bottone.setColoreBordo(Color.WHITE);
+        bottone.setForeground(PaletteColori.BLU);
+    }//GEN-LAST:event_roundButton1MouseExited
+
+    private void roundButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roundButton2ActionPerformed
+
+    private void roundButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton2MouseEntered
+        RoundButton bottone = (RoundButton) evt.getSource();
+        bottone.setColoreBordo(PaletteColori.BLU);
+        bottone.setForeground(Color.WHITE);
+    }//GEN-LAST:event_roundButton2MouseEntered
+
+    private void roundButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton2MouseExited
+        RoundButton bottone = (RoundButton) evt.getSource();
+        bottone.setColoreBordo(Color.WHITE);
+        bottone.setForeground(PaletteColori.BLU);
+    }//GEN-LAST:event_roundButton2MouseExited
+
+    private void roundButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roundButton3MouseEntered
+
+    private void roundButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roundButton3MouseExited
+
+    private void roundButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roundButton3ActionPerformed
+
+    private void roundButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roundButton4MouseEntered
+
+    private void roundButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roundButton4MouseExited
+
+    private void roundButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roundButton4ActionPerformed
 
     public void RegistraFont() {
-    try {
-    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, 
-        getClass().getResourceAsStream("/fonts/Montserrat-Regular.ttf")));
-    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, 
-        getClass().getResourceAsStream("/fonts/Montserrat-Bold.ttf")));
-    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, 
-        getClass().getResourceAsStream("/fonts/Montserrat-SemiBold.ttf")));
-} catch (Exception e) {
-    e.printStackTrace();
-}
-}
-    
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,
+                    getClass().getResourceAsStream("/fonts/Montserrat-Regular.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,
+                    getClass().getResourceAsStream("/fonts/Montserrat-Bold.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,
+                    getClass().getResourceAsStream("/fonts/Montserrat-SemiBold.ttf")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -153,10 +335,20 @@ public class frmProva extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private balatti_geronimi_javagui.GradientPanel gradientPanel1;
+    private balatti_geronimi_javagui.GradientPanel gradientPanel2;
     private balatti_geronimi_javagui.ImageLabel imageLabel1;
+    private balatti_geronimi_javagui.ImageLabel imageLabel2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel pnlRegistrati;
     private javax.swing.JPanel pnlWelcome;
-    private balatti_geronimi_javagui.RoundTextField roundTextField2;
+    private balatti_geronimi_javagui.RoundButton roundButton1;
+    private balatti_geronimi_javagui.RoundButton roundButton2;
+    private balatti_geronimi_javagui.RoundButton roundButton3;
+    private balatti_geronimi_javagui.RoundButton roundButton4;
     // End of variables declaration//GEN-END:variables
 }

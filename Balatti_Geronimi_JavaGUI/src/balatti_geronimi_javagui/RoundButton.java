@@ -5,6 +5,8 @@
 package balatti_geronimi_javagui;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
@@ -16,22 +18,59 @@ public class RoundButton extends JButton {
 
     private int raggio = 20;
     private Color coloreBordo = Color.BLACK;
+    private Color coloreHover = null;
+    private boolean hover = false;
 
     public RoundButton() {
         super();
+        this.setBackground(Color.WHITE);
         setOpaque(false);
         setContentAreaFilled(false);
-        setBorderPainted(false);   
+        setBorderPainted(false);
         setFocusPainted(false);
         setMargine();
+        aggiungiListenerHover();
+    }
+
+    private void aggiungiListenerHover() {
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                hover = true;
+                repaint();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                hover = false;
+                repaint();
+            }
+        });
+    }
+
+    private Color getColoreHoverEffettivo() {
+        if (coloreHover != null) {
+            return coloreHover;
+        }
+        Color base = getBackground();
+        float fattore = 0.85f;
+        return new Color(
+                (int) (base.getRed() * fattore),
+                (int) (base.getGreen() * fattore),
+                (int) (base.getBlue() * fattore)
+        );
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D graficaButton = (Graphics2D) g.create();
         graficaButton.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graficaButton.setColor(getBackground());
-        graficaButton.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, raggio, raggio);
+        if (hover) {
+            graficaButton.setColor(getColoreHoverEffettivo());
+        } else {
+            graficaButton.setColor(getBackground());
+        }
+        graficaButton.fillRoundRect(1, 1, getWidth() - 2, getHeight() - 2, raggio, raggio);
         graficaButton.dispose();
         super.paintComponent(g);
     }
@@ -41,7 +80,7 @@ public class RoundButton extends JButton {
         Graphics2D graficaButton = (Graphics2D) g.create();
         graficaButton.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graficaButton.setColor(coloreBordo);
-        graficaButton.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, raggio, raggio);
+        graficaButton.drawRoundRect(1, 1, getWidth() - 3, getHeight() - 3, raggio, raggio);
         graficaButton.dispose();
     }
 
@@ -70,6 +109,15 @@ public class RoundButton extends JButton {
 
     public void setColoreBordo(Color coloreBordo) {
         this.coloreBordo = coloreBordo;
+        repaint();
+    }
+
+    public Color getColoreHover() {
+        return coloreHover;
+    }
+
+    public void setColoreHover(Color coloreHover) {
+        this.coloreHover = coloreHover;
         repaint();
     }
 }

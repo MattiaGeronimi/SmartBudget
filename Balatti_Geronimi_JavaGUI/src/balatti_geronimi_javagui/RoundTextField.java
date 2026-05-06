@@ -28,7 +28,7 @@ public class RoundTextField extends JTextField {
         Graphics2D graficaTextField = (Graphics2D) g.create();
         graficaTextField.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graficaTextField.setColor(getBackground());
-        graficaTextField.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, raggio, raggio);
+        graficaTextField.fillRoundRect(1, 1, getWidth() - 2, getHeight() - 2, raggio, raggio);
         graficaTextField.dispose();
         super.paintComponent(g);
     }
@@ -38,7 +38,7 @@ public class RoundTextField extends JTextField {
         Graphics2D graficaTextField = (Graphics2D) g.create();
         graficaTextField.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graficaTextField.setColor(coloreBordo);
-        graficaTextField.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, raggio, raggio);
+        graficaTextField.drawRoundRect(1, 1, getWidth() - 3, getHeight() - 3, raggio, raggio);
         graficaTextField.dispose();
     }
 
