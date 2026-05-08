@@ -21,10 +21,10 @@ public class FrmHome extends javax.swing.JFrame {
     public Color darkColor = new Color(14,17,17);
     
     //Colore primario lightmode
-    public Color lightColor = new Color(250, 249, 246);
+    public Color lightColor = PaletteColori.BIANCO;
     
     //Colore secondario
-    public Color secondaryColor = new Color(44,128,100);
+    public Color secondaryColor = PaletteColori.VERDE;
     
     //Icona menu chiara
     ImageIcon menuIconLight = new ImageIcon(getClass().getResource("/resources/MenuIconLight.png"));
@@ -197,7 +197,7 @@ public class FrmHome extends javax.swing.JFrame {
         );
 
         PnlGradient.setColore1(new java.awt.Color(14, 17, 17));
-        PnlGradient.setColore2(new java.awt.Color(44, 128, 100));
+        PnlGradient.setColore2(new java.awt.Color(37, 178, 146));
         PnlGradient.setMaximumSize(new java.awt.Dimension(420, 600));
         PnlGradient.setMinimumSize(new java.awt.Dimension(420, 600));
         PnlGradient.setPreferredSize(new java.awt.Dimension(420, 600));

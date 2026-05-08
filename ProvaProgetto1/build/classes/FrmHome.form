@@ -235,7 +235,7 @@
                       <Color blue="11" green="11" red="e" type="rgb"/>
                     </Property>
                     <Property name="colore2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="64" green="80" red="2c" type="rgb"/>
+                      <Color blue="92" green="b2" red="25" type="rgb"/>
                     </Property>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[420, 600]"/>
