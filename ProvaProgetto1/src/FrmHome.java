@@ -4,6 +4,7 @@
  */
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 /**
  *
@@ -14,7 +15,8 @@ public class FrmHome extends javax.swing.JFrame {
     /**
      * Creates new form FrmHome
      */
-    
+    //Font
+    public Font font = new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 50);
     //Colore primario darkmode
     public Color darkColor = new Color(14,17,17);
     
@@ -37,7 +39,11 @@ public class FrmHome extends javax.swing.JFrame {
         initComponents();
         this.pack();
         setTitle("SmartBudget");
-        
+        RegistraFont();
+        jLabel1.setFont(font);
+        URL iconURL = getClass().getResource("/resources/icona.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
         //Bottone Menu
         BtnMenu.setFocusPainted(false);
         BtnMenu.setBorderPainted(false);
@@ -50,8 +56,22 @@ public class FrmHome extends javax.swing.JFrame {
         menu.setVisible(false);
         PnlLayer.add(menu, Integer.valueOf(1));
         menu.setFrame(this);
+        menu.setFont();
     }
-    
+    public void RegistraFont() 
+    {
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,
+                    getClass().getResourceAsStream("/fonts/Montserrat-Regular.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,
+                    getClass().getResourceAsStream("/fonts/Montserrat-Bold.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,
+                    getClass().getResourceAsStream("/fonts/Montserrat-SemiBold.ttf")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void colorMode()
     {
         if(tema == ColorMode.CHIARO)
@@ -116,6 +136,7 @@ public class FrmHome extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(420, 1000));
         setMinimumSize(new java.awt.Dimension(420, 800));
         setResizable(false);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         PnlFinestra.setMaximumSize(new java.awt.Dimension(420, 800));
         PnlFinestra.setMinimumSize(new java.awt.Dimension(420, 800));

@@ -10,7 +10,7 @@ import java.awt.*;
 public class PnlMenu extends javax.swing.JPanel {
 
     private FrmHome frame;
-    
+    public Font font = new java.awt.Font("Montserrat Bold", java.awt.Font.PLAIN, 24);
     /**
      * Creates new form PnlMenu
      */
@@ -33,7 +33,17 @@ public class PnlMenu extends javax.swing.JPanel {
     {
         this.frame = frame;
     }
-
+    
+    public void setFont()
+    {
+        jLabel1.setFont(font);
+        jLabel2.setFont(font);
+        jLabel3.setFont(font);
+        jLabel4.setFont(font);
+        jLabel5.setFont(font);
+        jLabel6.setFont(font);
+        jLabel7.setFont(font);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,18 +54,22 @@ public class PnlMenu extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(14, 17, 17));
         setMaximumSize(new java.awt.Dimension(200, 700));
         setMinimumSize(new java.awt.Dimension(200, 700));
         setPreferredSize(new java.awt.Dimension(200, 700));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
         jLabel1.setBackground(new java.awt.Color(13, 13, 13));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -63,8 +77,8 @@ public class PnlMenu extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CHIARO");
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel1.setMinimumSize(new java.awt.Dimension(200, 100));
-        jLabel1.setPreferredSize(new java.awt.Dimension(200, 100));
+        jLabel1.setMinimumSize(new java.awt.Dimension(200, 0));
+        jLabel1.setPreferredSize(new java.awt.Dimension(200, 75));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -81,15 +95,25 @@ public class PnlMenu extends javax.swing.JPanel {
         });
         add(jLabel1);
 
+        jSeparator1.setMaximumSize(new java.awt.Dimension(100, 10));
+        jSeparator1.setMinimumSize(new java.awt.Dimension(100, 10));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(100, 10));
+        add(jSeparator1);
+
         jLabel2.setBackground(new java.awt.Color(13, 13, 13));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("VOCI");
         jLabel2.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel2.setMinimumSize(new java.awt.Dimension(200, 100));
-        jLabel2.setPreferredSize(new java.awt.Dimension(200, 100));
+        jLabel2.setMinimumSize(new java.awt.Dimension(200, 0));
+        jLabel2.setPreferredSize(new java.awt.Dimension(200, 75));
         add(jLabel2);
+
+        jSeparator2.setMaximumSize(new java.awt.Dimension(100, 10));
+        jSeparator2.setMinimumSize(new java.awt.Dimension(100, 10));
+        jSeparator2.setPreferredSize(new java.awt.Dimension(100, 10));
+        add(jSeparator2);
 
         jLabel3.setBackground(new java.awt.Color(13, 13, 13));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -97,9 +121,14 @@ public class PnlMenu extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("VOCI");
         jLabel3.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel3.setMinimumSize(new java.awt.Dimension(200, 100));
-        jLabel3.setPreferredSize(new java.awt.Dimension(200, 100));
+        jLabel3.setMinimumSize(new java.awt.Dimension(200, 0));
+        jLabel3.setPreferredSize(new java.awt.Dimension(200, 75));
         add(jLabel3);
+
+        jSeparator3.setMaximumSize(new java.awt.Dimension(100, 10));
+        jSeparator3.setMinimumSize(new java.awt.Dimension(100, 10));
+        jSeparator3.setPreferredSize(new java.awt.Dimension(100, 10));
+        add(jSeparator3);
 
         jLabel4.setBackground(new java.awt.Color(13, 13, 13));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -107,9 +136,14 @@ public class PnlMenu extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("VOCI");
         jLabel4.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel4.setMinimumSize(new java.awt.Dimension(200, 100));
-        jLabel4.setPreferredSize(new java.awt.Dimension(200, 100));
+        jLabel4.setMinimumSize(new java.awt.Dimension(200, 0));
+        jLabel4.setPreferredSize(new java.awt.Dimension(200, 75));
         add(jLabel4);
+
+        jSeparator4.setMaximumSize(new java.awt.Dimension(100, 10));
+        jSeparator4.setMinimumSize(new java.awt.Dimension(100, 10));
+        jSeparator4.setPreferredSize(new java.awt.Dimension(100, 10));
+        add(jSeparator4);
 
         jLabel5.setBackground(new java.awt.Color(13, 13, 13));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -117,29 +151,32 @@ public class PnlMenu extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("VOCI");
         jLabel5.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel5.setMinimumSize(new java.awt.Dimension(200, 100));
-        jLabel5.setPreferredSize(new java.awt.Dimension(200, 100));
+        jLabel5.setMinimumSize(new java.awt.Dimension(200, 0));
+        jLabel5.setPreferredSize(new java.awt.Dimension(200, 75));
         add(jLabel5);
 
-        jLabel6.setBackground(new java.awt.Color(13, 13, 13));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("VOCI");
-        jLabel6.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel6.setMinimumSize(new java.awt.Dimension(200, 100));
-        jLabel6.setPreferredSize(new java.awt.Dimension(200, 100));
-        add(jLabel6);
+        jSeparator5.setMaximumSize(new java.awt.Dimension(100, 10));
+        jSeparator5.setMinimumSize(new java.awt.Dimension(100, 10));
+        jSeparator5.setPreferredSize(new java.awt.Dimension(100, 10));
+        add(jSeparator5);
 
         jLabel7.setBackground(new java.awt.Color(13, 13, 13));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("VOCI");
         jLabel7.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel7.setMinimumSize(new java.awt.Dimension(200, 100));
-        jLabel7.setPreferredSize(new java.awt.Dimension(200, 100));
+        jLabel7.setMinimumSize(new java.awt.Dimension(200, 0));
+        jLabel7.setPreferredSize(new java.awt.Dimension(200, 75));
         add(jLabel7);
+
+        jLabel6.setBackground(new java.awt.Color(13, 13, 13));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setMaximumSize(new java.awt.Dimension(200, 100));
+        jLabel6.setMinimumSize(new java.awt.Dimension(200, 0));
+        jLabel6.setPreferredSize(new java.awt.Dimension(200, 100));
+        add(jLabel6);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -151,27 +188,29 @@ public class PnlMenu extends javax.swing.JPanel {
         if(frame.getTema() == ColorMode.SCURO)
         {
             jLabel1.setText("CHIARO"); 
+            jLabel1.setBackground(frame.darkColor);
         }
         else
         {
             jLabel1.setText("SCURO");
+            jLabel1.setBackground(frame.lightColor);
         }
         frame.colorMode();
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-        jLabel1.setBackground(frame.secondaryColor);
+        jLabel1.setForeground(frame.secondaryColor);       
         jLabel1.setOpaque(true);
     }//GEN-LAST:event_jLabel1MouseEntered
 
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
         if(frame.getTema() == ColorMode.SCURO)
         {
-            jLabel1.setBackground(frame.darkColor);
+            jLabel1.setForeground(frame.lightColor);
         }
         else
         {
-            jLabel1.setBackground(frame.lightColor);
+            jLabel1.setForeground(frame.darkColor);
         }
         jLabel1.setOpaque(false);
     }//GEN-LAST:event_jLabel1MouseExited
@@ -185,5 +224,10 @@ public class PnlMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     // End of variables declaration//GEN-END:variables
 }
