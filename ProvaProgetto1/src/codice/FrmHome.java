@@ -31,14 +31,14 @@ public class FrmHome extends javax.swing.JFrame {
     public FrmHome() 
     {
         RegistraFont();     //Metodo per importare i Font 
+        coloreSecondario = PaletteColori.VERDE;
         initComponents();
+        
         this.pack();
         setTitle("SmartBudget");
         
         jLabel1.setFont(fontSaldo);     //Imposta Font personalizzato al saldo
-        
-        this.colorMode();
-        
+              
         //Icona della finestra
         URL iconURL = getClass().getResource("/immagini/icona.png");
         ImageIcon icon = new ImageIcon(iconURL);
@@ -51,11 +51,15 @@ public class FrmHome extends javax.swing.JFrame {
         BtnMenu.setOpaque(false);      
         
         //Pannello menu
-        menu.setBounds(-200, 100, 200, 700);
-        menu.setVisible(false);
-        PnlLayer.add(menu, Integer.valueOf(1));
+        menu.setBounds(-200, 100, 200, 700);    //Disegna fuori dallo schermo
+        menu.setVisible(false);                 //Non visibile
+        PnlLayer.add(menu, Integer.valueOf(1)); //In un layer alto
         menu.setFrame(this);
+        menu.disegnaComboBox(tema);
         menu.setFont();
+        
+        //Imposta modalita di visualizzazione colori
+        this.colorMode();
     }
     public void RegistraFont() 
     {
@@ -92,7 +96,10 @@ public class FrmHome extends javax.swing.JFrame {
             menu.setLabelsColor(PaletteColori.BIANCO);
             jLabel1.setForeground(PaletteColori.BIANCO);
             BtnMenu.setIcon(new ImageIcon(menuIconScaledLight));
-        }    
+        }  
+        menu.disegnaComboBox(tema);
+        PnlGradient.setColore2(coloreSecondario);
+        PnlBottomMenu.setBackground(coloreSecondario);
     }
     
     public void setTema()
@@ -125,6 +132,7 @@ public class FrmHome extends javax.swing.JFrame {
         PnlHeader = new javax.swing.JPanel();
         BtnMenu = new javax.swing.JButton();
         PnlBottomMenu = new javax.swing.JPanel();
+        PnlScheda = new javax.swing.JPanel();
         PnlGradient = new codice.GradientPanel();
         PnlSaldo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -192,6 +200,8 @@ public class FrmHome extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        PnlScheda.setLayout(new java.awt.CardLayout());
+
         PnlGradient.setColore1(new java.awt.Color(14, 17, 17));
         PnlGradient.setColore2(new java.awt.Color(37, 178, 146));
         PnlGradient.setMaximumSize(new java.awt.Dimension(420, 600));
@@ -219,7 +229,7 @@ public class FrmHome extends javax.swing.JFrame {
         PnlGradient.setLayout(PnlGradientLayout);
         PnlGradientLayout.setHorizontalGroup(
             PnlGradientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PnlSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+            .addComponent(PnlSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PnlGradientLayout.setVerticalGroup(
             PnlGradientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,17 +238,20 @@ public class FrmHome extends javax.swing.JFrame {
                 .addGap(0, 400, Short.MAX_VALUE))
         );
 
+        PnlScheda.add(PnlGradient, "card2");
+
         javax.swing.GroupLayout PnlContenutoLayout = new javax.swing.GroupLayout(PnlContenuto);
         PnlContenuto.setLayout(PnlContenutoLayout);
         PnlContenutoLayout.setHorizontalGroup(
             PnlContenutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnlContenutoLayout.createSequentialGroup()
                 .addGroup(PnlContenutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PnlGradient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PnlHeader, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PnlContenutoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(PnlBottomMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(PnlContenutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PnlScheda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PnlBottomMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 418, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PnlContenutoLayout.setVerticalGroup(
@@ -246,10 +259,10 @@ public class FrmHome extends javax.swing.JFrame {
             .addGroup(PnlContenutoLayout.createSequentialGroup()
                 .addComponent(PnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(PnlGradient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addComponent(PnlScheda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(PnlBottomMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         PnlLayer.setLayer(PnlContenuto, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -374,7 +387,7 @@ public class FrmHome extends javax.swing.JFrame {
     
     private ColorMode tema = ColorMode.CHIARO;
     private PnlMenu menu = new PnlMenu(); 
-    public Color coloreSecondario = PaletteColori.VERDE;
+    public Color coloreSecondario;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnMenu;
@@ -385,6 +398,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JPanel PnlHeader;
     private javax.swing.JLayeredPane PnlLayer;
     private javax.swing.JPanel PnlSaldo;
+    private javax.swing.JPanel PnlScheda;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

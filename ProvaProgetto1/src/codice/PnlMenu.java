@@ -5,6 +5,7 @@ package codice;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 import java.awt.*;
+import javax.swing.*;
 /**
  *
  * @author matge
@@ -18,8 +19,78 @@ public class PnlMenu extends javax.swing.JPanel {
      */
     public PnlMenu() {
         initComponents();
+        
     }
     
+    public void disegnaComboBox(ColorMode tema)
+    {
+        Color backColor;
+        Color textColor;
+        if(tema == ColorMode.SCURO)
+        {
+            backColor = PaletteColori.NERO; 
+            textColor = PaletteColori.BIANCO;
+        }
+        else
+        {
+            backColor = PaletteColori.BIANCO;
+            textColor = PaletteColori.NERO;
+        }
+        Color c2 = frame.coloreSecondario;
+        
+        jComboBox1.setFont(font);
+        jComboBox1.setBackground(backColor);
+        jComboBox1.setForeground(textColor);
+        jComboBox1.setFocusable(false);
+        jComboBox1.setOpaque(false);
+        
+        jComboBox1.setRenderer(new DefaultListCellRenderer()    //Modifica il Renderer della tendina che si apre nella Combobox
+            {
+                @Override
+                public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                    JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    label.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));       //Bordo
+                    label.setFont(font);
+                    label.setHorizontalAlignment(SwingConstants.CENTER);
+                    if (isSelected)     //Colora l'opzione selezionata
+                    {       
+                        label.setForeground(c2);    //Testo in colore secondario
+                        label.setBackground(backColor);
+                    } 
+                    else 
+                    {
+                        // Colore normale
+                        label.setBackground(backColor);
+                        label.setForeground(textColor);
+                    }
+                    return label;
+                }      
+            }
+        );
+        
+        jComboBox1.setUI(new javax.swing.plaf.basic.BasicComboBoxUI()       
+            {
+                @Override
+                protected JButton createArrowButton()   //Modifica il bottone contenente la freccia della Combobox
+                {
+                    JButton flatButton = new JButton("▼"); 
+                    flatButton.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+                    flatButton.setContentAreaFilled(false);
+                    flatButton.setFocusPainted(false);
+                    flatButton.setOpaque(false);
+                    flatButton.setBackground(backColor);
+                    flatButton.setForeground(textColor);
+                    return flatButton;
+                }
+
+                @Override
+                public void paintCurrentValueBackground(Graphics g, Rectangle bounds, boolean hasFocus) {
+                    //Sovrascrivo il metodo vuoto per impedire il disegno di un rettangolo grigio di base
+                    //che si mostrerebbe come bordo nel design attuale
+                }              
+            }
+        );
+    }
     public void setLabelsColor(Color c)
     {
         jLabel1.setForeground(c);
@@ -44,6 +115,8 @@ public class PnlMenu extends javax.swing.JPanel {
         jLabel6.setFont(font);
         jLabel7.setFont(font);
     }
+    // Sostituisci "jComboBox1" con il nome della variabile della tua combobox
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,7 +128,8 @@ public class PnlMenu extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -96,23 +170,41 @@ public class PnlMenu extends javax.swing.JPanel {
         add(jLabel1);
 
         jSeparator1.setMaximumSize(new java.awt.Dimension(100, 10));
-        jSeparator1.setMinimumSize(new java.awt.Dimension(100, 10));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(100, 10));
+        jSeparator1.setMinimumSize(new java.awt.Dimension(100, 0));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(100, 5));
         add(jSeparator1);
 
-        jLabel8.setBackground(new java.awt.Color(14, 17, 17));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("VOCI");
-        jLabel8.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel8.setMinimumSize(new java.awt.Dimension(200, 0));
-        jLabel8.setPreferredSize(new java.awt.Dimension(200, 75));
-        add(jLabel8);
+        jPanel1.setMaximumSize(new java.awt.Dimension(200, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(200, 0));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(200, 75));
+
+        jComboBox1.setBackground(new java.awt.Color(255, 0, 51));
+        jComboBox1.setForeground(PaletteColori.NERO);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEMA", "VERDE", "ROSSO", "BLU" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jComboBox1.setFocusable(false);
+        jComboBox1.setPreferredSize(new java.awt.Dimension(175, 70));
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseExited(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1);
+
+        add(jPanel1);
 
         jSeparator2.setMaximumSize(new java.awt.Dimension(100, 10));
-        jSeparator2.setMinimumSize(new java.awt.Dimension(100, 10));
-        jSeparator2.setPreferredSize(new java.awt.Dimension(100, 10));
+        jSeparator2.setMinimumSize(new java.awt.Dimension(100, 0));
+        jSeparator2.setPreferredSize(new java.awt.Dimension(100, 5));
         add(jSeparator2);
 
         jLabel3.setBackground(new java.awt.Color(14, 17, 17));
@@ -126,8 +218,8 @@ public class PnlMenu extends javax.swing.JPanel {
         add(jLabel3);
 
         jSeparator3.setMaximumSize(new java.awt.Dimension(100, 10));
-        jSeparator3.setMinimumSize(new java.awt.Dimension(100, 10));
-        jSeparator3.setPreferredSize(new java.awt.Dimension(100, 10));
+        jSeparator3.setMinimumSize(new java.awt.Dimension(100, 0));
+        jSeparator3.setPreferredSize(new java.awt.Dimension(100, 5));
         add(jSeparator3);
 
         jLabel4.setBackground(new java.awt.Color(14, 17, 17));
@@ -141,8 +233,8 @@ public class PnlMenu extends javax.swing.JPanel {
         add(jLabel4);
 
         jSeparator4.setMaximumSize(new java.awt.Dimension(100, 10));
-        jSeparator4.setMinimumSize(new java.awt.Dimension(100, 10));
-        jSeparator4.setPreferredSize(new java.awt.Dimension(100, 10));
+        jSeparator4.setMinimumSize(new java.awt.Dimension(100, 0));
+        jSeparator4.setPreferredSize(new java.awt.Dimension(100, 5));
         add(jSeparator4);
 
         jLabel5.setBackground(new java.awt.Color(14, 17, 17));
@@ -156,8 +248,8 @@ public class PnlMenu extends javax.swing.JPanel {
         add(jLabel5);
 
         jSeparator5.setMaximumSize(new java.awt.Dimension(100, 10));
-        jSeparator5.setMinimumSize(new java.awt.Dimension(100, 10));
-        jSeparator5.setPreferredSize(new java.awt.Dimension(100, 10));
+        jSeparator5.setMinimumSize(new java.awt.Dimension(100, 0));
+        jSeparator5.setPreferredSize(new java.awt.Dimension(100, 5));
         add(jSeparator5);
 
         jLabel7.setBackground(new java.awt.Color(14, 17, 17));
@@ -213,15 +305,51 @@ public class PnlMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabel1MouseExited
 
+    private void jComboBox1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseEntered
+        jComboBox1.setForeground(frame.coloreSecondario);
+    }//GEN-LAST:event_jComboBox1MouseEntered
+
+    private void jComboBox1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseExited
+        if(frame.getTema() == ColorMode.SCURO)
+        {
+            jComboBox1.setForeground(PaletteColori.BIANCO);
+        }
+        else
+        {
+            jComboBox1.setForeground(PaletteColori.NERO);
+        }
+    }//GEN-LAST:event_jComboBox1MouseExited
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        Object sceltaTema = jComboBox1.getSelectedItem();
+        String colore = sceltaTema.toString();
+        
+        switch(colore)
+        {
+            case "BLU":
+                frame.coloreSecondario = PaletteColori.BLU;
+                break;
+            case "VERDE":
+                frame.coloreSecondario = PaletteColori.VERDE;
+                break;
+            default:
+                frame.coloreSecondario = PaletteColori.VERDE;
+                break;
+        }
+        frame.colorMode();
+        frame.repaint();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
