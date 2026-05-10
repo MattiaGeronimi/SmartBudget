@@ -3,13 +3,13 @@ nome di base colore grigino chiaro, non appena metto il focus sul texfield il te
  colore in nero. mentre inseriamo il nome utente (ogni carattere inserito) viene fatto un controlo su il 
 text del textfield: il bordo della textfield diventa rosso se il nome utente inserito ha <= 3 caratteri 
 oppure se il nome inserito è uguale ad uno dei nomi presenti nell'arraylist di utenti presenti in un file 
-(ogni utente del arraylist ha salvate svariati attributi, tu gestisci solo il nome utente per ora, fai 
+(ogni utente del arraylist ha salvate svariati attributi, oppure se il nome presenta spazi, tu gestisci solo il nome utente per ora, fai 
 riferimento alla classe "Utente" quando fai il casting per input da file binario), i nomi non possono 
 essere uguali indipendentemente da uppercase o lowercase (lascia comunque la possibilità di avere uppercase 
 e lowercase nel nome). Il textfield ritorna con il bordo di colore normale quando il nome utente va bene. 
 inoltre fai in modo che la label di fianco alla texfield del nome utente non abbia scritto nulla sia all'inizio, 
 sia quando il nome utente va bene. E che ci sia la scritta rossa "Il nome utente deve avere almeno 3 caratteri" 
-se è il caso e che ci sia la scritta rossa "nome utente già esistente" se è il caso.
+se è il caso e che ci sia la scritta rossa "nome utente già esistente" se è il caso, "Il nome utente non puó presentare spazi" se il caso.
 
 
 
