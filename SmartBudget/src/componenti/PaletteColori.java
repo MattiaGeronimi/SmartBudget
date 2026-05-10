@@ -15,4 +15,7 @@ public class PaletteColori {
     public static final Color VERDE = new Color(37,178,146);
     public static final Color NERO = new Color(14,17,17);
     public static final Color BIANCO = new Color(250,249,246);
+    public static final Color ROSSO = new Color(238, 75, 43);
+    public static final Color BLU_GRIGIO = new Color(105, 111, 125);
+    
 }

@@ -304,14 +304,20 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="componenti.RoundTextField" name="txtUsername">
+            <Component class="componenti.RoundTextFieldIcon" name="txtUsername">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="PaletteColori.BLU_GRIGIO" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Inserisci nome utente..."/>
                 <Property name="coloreBordo" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="PaletteColori.BLU" type="code"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new java.awt.Font(&quot;Montserrat&quot;, java.awt.Font.PLAIN, 16)&#xd;&#xa;" type="code"/>
+                </Property>
+                <Property name="icona" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/immagini/UserBlu.png"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[340, 60]"/>
@@ -323,6 +329,7 @@
                   <Dimension value="[340, 60]"/>
                 </Property>
                 <Property name="raggio" type="int" value="40"/>
+                <Property name="spazioOccupato" type="double" value="0.48"/>
               </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUsernameFocusGained"/>
@@ -368,8 +375,21 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="componenti.RoundPasswordField" name="pswPassword">
+            <Component class="componenti.RoundPasswordFieldIcon" name="pswPassword">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="PaletteColori.BLU_GRIGIO" type="code"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inserisci password..."/>
+                <Property name="echoChar" type="char" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="(char) 0" type="code"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new java.awt.Font(&quot;Montserrat&quot;, java.awt.Font.PLAIN, 16)&#xd;&#xa;" type="code"/>
+                </Property>
+                <Property name="icona" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/immagini/LucchettoBlu.png"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[340, 60]"/>
                 </Property>
@@ -380,7 +400,13 @@
                   <Dimension value="[340, 60]"/>
                 </Property>
                 <Property name="raggio" type="int" value="40"/>
+                <Property name="spazioOccupato" type="double" value="0.48"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pswPasswordFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pswPasswordFocusLost"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pswPasswordKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.Box$Filler" name="flrSpazio2">
               <Properties>
@@ -398,7 +424,7 @@
                 <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblRipetiPassword">
+            <Component class="javax.swing.JLabel" name="lblConfermaPassword">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new java.awt.Font(&quot;Montserrat SemiBold&quot;, java.awt.Font.PLAIN, 15)&#xd;&#xa;" type="code"/>
@@ -407,7 +433,7 @@
                   <Color blue="62" green="2d" red="19" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="text" type="java.lang.String" value="Ripeti password"/>
+                <Property name="text" type="java.lang.String" value="Conferma password"/>
                 <Property name="alignmentX" type="float" value="0.5"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[340, 30]"/>
@@ -420,8 +446,21 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="componenti.RoundPasswordField" name="pswRipetiPassword">
+            <Component class="componenti.RoundPasswordFieldIcon" name="pswConfermaPassword">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="PaletteColori.BLU_GRIGIO" type="code"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Conferma password..."/>
+                <Property name="echoChar" type="char" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="(char) 0" type="code"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new java.awt.Font(&quot;Montserrat&quot;, java.awt.Font.PLAIN, 16)&#xd;&#xa;" type="code"/>
+                </Property>
+                <Property name="icona" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/immagini/ScudoBlu.png"/>
+                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[340, 60]"/>
                 </Property>
@@ -432,7 +471,13 @@
                   <Dimension value="[340, 60]"/>
                 </Property>
                 <Property name="raggio" type="int" value="40"/>
+                <Property name="spazioOccupato" type="double" value="0.48"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pswConfermaPasswordFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pswConfermaPasswordFocusLost"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pswConfermaPasswordKeyReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

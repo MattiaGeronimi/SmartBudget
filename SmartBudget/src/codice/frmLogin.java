@@ -21,10 +21,18 @@ import javax.swing.ImageIcon;
  */
 public class frmLogin extends javax.swing.JFrame {
 
-    private final Color COLORE_PLACEHOLDER = Color.LIGHT_GRAY;
+    private final Color COLORE_PLACEHOLDER = PaletteColori.BLU_GRIGIO;
     private final Color COLORE_FONT = Color.BLACK;
-    private final Color COLORE_ERRORE = Color.RED;
     private final String PLACEHOLDER_USERNAME = "Inserisci nome utente...";
+    private final String PLACEHOLDER_PASSWORD = "Inserisci password...";
+    private final String PLACEHOLDER_CONFERMA_PASSWORD = "Conferma password...";
+
+    private final ImageIcon USER_BLU = new ImageIcon(getClass().getResource("/immagini/UserBlu.png"));
+    private final ImageIcon USER_ROSSO = new ImageIcon(getClass().getResource("/immagini/UserRosso.png"));
+    private final ImageIcon LUCCHETTO_BLU = new ImageIcon(getClass().getResource("/immagini/LucchettoBlu.png"));
+    private final ImageIcon LUCCHETTO_ROSSO = new ImageIcon(getClass().getResource("/immagini/LucchettoRosso.png"));
+    private final ImageIcon SCUDO_BLU = new ImageIcon(getClass().getResource("/immagini/ScudoBlu.png"));
+    private final ImageIcon SCUDO_ROSSO = new ImageIcon(getClass().getResource("/immagini/ScudoRosso.png"));
 
     java.awt.CardLayout cardLayout1 = null;
 
@@ -61,13 +69,13 @@ public class frmLogin extends javax.swing.JFrame {
         lblIstruzioni = new javax.swing.JLabel();
         pnlDati = new javax.swing.JPanel();
         lblUsername = new javax.swing.JLabel();
-        txtUsername = new componenti.RoundTextField();
+        txtUsername = new componenti.RoundTextFieldIcon();
         flrSpazio1 = new javax.swing.Box.Filler(new java.awt.Dimension(420, 30), new java.awt.Dimension(420, 30), new java.awt.Dimension(420, 30));
         lblPassword = new javax.swing.JLabel();
-        pswPassword = new componenti.RoundPasswordField();
+        pswPassword = new componenti.RoundPasswordFieldIcon();
         flrSpazio2 = new javax.swing.Box.Filler(new java.awt.Dimension(420, 30), new java.awt.Dimension(420, 30), new java.awt.Dimension(420, 30));
-        lblRipetiPassword = new javax.swing.JLabel();
-        pswRipetiPassword = new componenti.RoundPasswordField();
+        lblConfermaPassword = new javax.swing.JLabel();
+        pswConfermaPassword = new componenti.RoundPasswordFieldIcon();
         sprLinea1 = new javax.swing.JSeparator();
         sprLinea2 = new javax.swing.JSeparator();
         imgLogo = new componenti.ImageLabel();
@@ -202,14 +210,17 @@ public class frmLogin extends javax.swing.JFrame {
         lblUsername.setPreferredSize(new java.awt.Dimension(340, 30));
         pnlDati.add(lblUsername);
 
+        txtUsername.setForeground(PaletteColori.BLU_GRIGIO);
         txtUsername.setText("Inserisci nome utente...");
         txtUsername.setColoreBordo(PaletteColori.BLU);
         txtUsername.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 16)
         );
+        txtUsername.setIcona(new javax.swing.ImageIcon(getClass().getResource("/immagini/UserBlu.png"))); // NOI18N
         txtUsername.setMaximumSize(new java.awt.Dimension(340, 60));
         txtUsername.setMinimumSize(new java.awt.Dimension(340, 60));
         txtUsername.setPreferredSize(new java.awt.Dimension(340, 60));
         txtUsername.setRaggio(40);
+        txtUsername.setSpazioOccupato(0.48);
         txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtUsernameFocusGained(evt);
@@ -237,29 +248,69 @@ public class frmLogin extends javax.swing.JFrame {
         lblPassword.setPreferredSize(new java.awt.Dimension(340, 30));
         pnlDati.add(lblPassword);
 
+        pswPassword.setForeground(PaletteColori.BLU_GRIGIO);
+        pswPassword.setText("Inserisci password...");
+        pswPassword.setEchoChar((char) 0);
+        pswPassword.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 16)
+        );
+        pswPassword.setIcona(new javax.swing.ImageIcon(getClass().getResource("/immagini/LucchettoBlu.png"))); // NOI18N
         pswPassword.setMaximumSize(new java.awt.Dimension(340, 60));
         pswPassword.setMinimumSize(new java.awt.Dimension(340, 60));
         pswPassword.setPreferredSize(new java.awt.Dimension(340, 60));
         pswPassword.setRaggio(40);
+        pswPassword.setSpazioOccupato(0.48);
+        pswPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pswPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pswPasswordFocusLost(evt);
+            }
+        });
+        pswPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pswPasswordKeyReleased(evt);
+            }
+        });
         pnlDati.add(pswPassword);
         pnlDati.add(flrSpazio2);
 
-        lblRipetiPassword.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 15)
+        lblConfermaPassword.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 15)
         );
-        lblRipetiPassword.setForeground(new java.awt.Color(25, 45, 98));
-        lblRipetiPassword.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblRipetiPassword.setText("Ripeti password");
-        lblRipetiPassword.setAlignmentX(0.5F);
-        lblRipetiPassword.setMaximumSize(new java.awt.Dimension(340, 30));
-        lblRipetiPassword.setMinimumSize(new java.awt.Dimension(340, 30));
-        lblRipetiPassword.setPreferredSize(new java.awt.Dimension(340, 30));
-        pnlDati.add(lblRipetiPassword);
+        lblConfermaPassword.setForeground(new java.awt.Color(25, 45, 98));
+        lblConfermaPassword.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblConfermaPassword.setText("Conferma password");
+        lblConfermaPassword.setAlignmentX(0.5F);
+        lblConfermaPassword.setMaximumSize(new java.awt.Dimension(340, 30));
+        lblConfermaPassword.setMinimumSize(new java.awt.Dimension(340, 30));
+        lblConfermaPassword.setPreferredSize(new java.awt.Dimension(340, 30));
+        pnlDati.add(lblConfermaPassword);
 
-        pswRipetiPassword.setMaximumSize(new java.awt.Dimension(340, 60));
-        pswRipetiPassword.setMinimumSize(new java.awt.Dimension(340, 60));
-        pswRipetiPassword.setPreferredSize(new java.awt.Dimension(340, 60));
-        pswRipetiPassword.setRaggio(40);
-        pnlDati.add(pswRipetiPassword);
+        pswConfermaPassword.setForeground(PaletteColori.BLU_GRIGIO);
+        pswConfermaPassword.setText("Conferma password...");
+        pswConfermaPassword.setEchoChar((char) 0);
+        pswConfermaPassword.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 16)
+        );
+        pswConfermaPassword.setIcona(new javax.swing.ImageIcon(getClass().getResource("/immagini/ScudoBlu.png"))); // NOI18N
+        pswConfermaPassword.setMaximumSize(new java.awt.Dimension(340, 60));
+        pswConfermaPassword.setMinimumSize(new java.awt.Dimension(340, 60));
+        pswConfermaPassword.setPreferredSize(new java.awt.Dimension(340, 60));
+        pswConfermaPassword.setRaggio(40);
+        pswConfermaPassword.setSpazioOccupato(0.48);
+        pswConfermaPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pswConfermaPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pswConfermaPasswordFocusLost(evt);
+            }
+        });
+        pswConfermaPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pswConfermaPasswordKeyReleased(evt);
+            }
+        });
+        pnlDati.add(pswConfermaPassword);
 
         pnlRegistrati.add(pnlDati, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 420, 350));
 
@@ -362,19 +413,74 @@ public class frmLogin extends javax.swing.JFrame {
         ControlloUsername();
     }//GEN-LAST:event_txtUsernameKeyReleased
 
-    public void ControlloUsername() {
+    private void pswPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswPasswordFocusGained
+        String password = String.valueOf(pswPassword.getPassword());
+        if (password.equals(PLACEHOLDER_PASSWORD)) {
+            pswPassword.setText("");
+            pswPassword.setForeground(COLORE_FONT);
+            pswPassword.setEchoChar('•');
+        }
+    }//GEN-LAST:event_pswPasswordFocusGained
+
+    private void pswPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswPasswordFocusLost
+        String password = String.valueOf(pswPassword.getPassword());
+        if (password.isEmpty()) {
+            pswPassword.setEchoChar((char) 0);
+            pswPassword.setText(PLACEHOLDER_PASSWORD);
+            pswPassword.setForeground(COLORE_PLACEHOLDER);
+        }
+    }//GEN-LAST:event_pswPasswordFocusLost
+
+    private void pswPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordKeyReleased
+        ControlloPassword();
+        ControlloConfermaPassword();
+    }//GEN-LAST:event_pswPasswordKeyReleased
+
+    private void pswConfermaPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswConfermaPasswordFocusGained
+        String password = String.valueOf(pswConfermaPassword.getPassword());
+        if (password.equals(PLACEHOLDER_CONFERMA_PASSWORD)) {
+            pswConfermaPassword.setText("");
+            pswConfermaPassword.setForeground(COLORE_FONT);
+            pswConfermaPassword.setEchoChar('•');
+        }
+    }//GEN-LAST:event_pswConfermaPasswordFocusGained
+
+    private void pswConfermaPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswConfermaPasswordFocusLost
+        String password = String.valueOf(pswConfermaPassword.getPassword());
+        if (password.isEmpty()) {
+            pswConfermaPassword.setEchoChar((char) 0);
+            pswConfermaPassword.setText(PLACEHOLDER_CONFERMA_PASSWORD);
+            pswConfermaPassword.setForeground(COLORE_PLACEHOLDER);
+        }
+    }//GEN-LAST:event_pswConfermaPasswordFocusLost
+
+    private void pswConfermaPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswConfermaPasswordKeyReleased
+        ControlloConfermaPassword();
+    }//GEN-LAST:event_pswConfermaPasswordKeyReleased
+
+    public boolean ControlloUsername() {
         String username = txtUsername.getText();
         if (username.equals(PLACEHOLDER_USERNAME) || username.isEmpty()) {
             UsernameValido();
-            return;
+            return true;
         } else if (username.contains(" ")) {
-            UsernameInvalido("Uno username non può contenere spazi");
+            UsernameInvalido("non può contenere spazi");
+            return false;
         } else if (username.length() <= 3) {
-            UsernameInvalido("Uno username deve avere almeno 3 caratteri");
+            UsernameInvalido("almeno 3 caratteri");
+            return false;
         } else if (usernameEsistente(username)) {
-            UsernameInvalido("Username già esistente");
+            UsernameInvalido("già esistente");
+            return false;
+        } else if (username.contains("\\")) {
+            UsernameInvalido("non può contenere \\");
+            return false;
+        } else if (username.length() >= 25) {
+            UsernameInvalido("massimo 25 caratteri");
+            return false;
         } else {
             UsernameValido();
+            return true;
         }
     }
 
@@ -382,12 +488,14 @@ public class frmLogin extends javax.swing.JFrame {
         txtUsername.setColoreBordo(PaletteColori.BLU);
         lblUsername.setForeground(PaletteColori.BLU);
         lblUsername.setText("Username");
+        txtUsername.setIcona(USER_BLU);
     }
 
     public void UsernameInvalido(String messaggio) {
-        txtUsername.setColoreBordo(COLORE_ERRORE);
-        lblUsername.setForeground(COLORE_ERRORE);
+        txtUsername.setColoreBordo(PaletteColori.ROSSO);
+        lblUsername.setForeground(PaletteColori.ROSSO);
         lblUsername.setText("Username - " + messaggio);
+        txtUsername.setIcona(USER_ROSSO);
 
     }
 
@@ -406,7 +514,7 @@ public class frmLogin extends javax.swing.JFrame {
         username = username.toLowerCase();
         ArrayList<Utente> utenti = getListaUtenti();
         for (int i = 0; i < utenti.size(); i++) {
-            Utente temp = utenti.get(i); 
+            Utente temp = utenti.get(i);
             if (temp.getUsername().toLowerCase().equals(username)) {
                 return temp;
             }
@@ -414,10 +522,72 @@ public class frmLogin extends javax.swing.JFrame {
         return null;
     }
 
-    public boolean usernameEsistente (String username) {
+    public boolean usernameEsistente(String username) {
         return getUtente(username) != null;
     }
+
+    public boolean ControlloPassword() {
+        String password = String.valueOf(pswPassword.getPassword());
+        if (password.equals(PLACEHOLDER_PASSWORD) || password.isEmpty()) {
+            PasswordValida();
+            return true;
+        } else if (password.contains(" ")) {
+            PasswordInvalida("non può contenere spazi");
+            return false;
+        } else if (password.length() < 8) {
+            PasswordInvalida("almeno 8 caratteri");
+            return false;
+        } else if (password.length() >= 25) {
+            PasswordInvalida("massimo 25 caratteri");
+            return false;
+        } else {
+            PasswordValida();
+            return true;
+        }
+    }
+
+    public void PasswordValida() {
+        pswPassword.setColoreBordo(PaletteColori.BLU);
+        lblPassword.setForeground(PaletteColori.BLU);
+        lblPassword.setText("Password");
+        pswPassword.setIcona(LUCCHETTO_BLU);
+    }
+
+    public void PasswordInvalida(String messaggio) {
+        pswPassword.setColoreBordo(PaletteColori.ROSSO);
+        lblPassword.setForeground(PaletteColori.ROSSO);
+        lblPassword.setText("Password - " + messaggio);
+        pswPassword.setIcona(LUCCHETTO_ROSSO);
+    }
     
+    public boolean ControlloConfermaPassword() {
+        String password = String.valueOf(pswConfermaPassword.getPassword());
+        if (password.equals(PLACEHOLDER_CONFERMA_PASSWORD) || password.isEmpty()) {
+            ControlloPasswordValida();
+            return true;
+        } else if (!password.equals(String.valueOf(pswPassword.getPassword()))) {
+            ControlloPasswordInvalida("non sono identiche");
+            return false;
+        } else {
+            ControlloPasswordValida();
+            return true;
+        }
+    }
+    
+    public void ControlloPasswordValida() {
+        pswConfermaPassword.setColoreBordo(PaletteColori.BLU);
+        lblConfermaPassword.setForeground(PaletteColori.BLU);
+        lblConfermaPassword.setText("Conferma password");
+        pswConfermaPassword.setIcona(SCUDO_BLU);
+    }
+
+    public void ControlloPasswordInvalida(String messaggio) {
+        pswConfermaPassword.setColoreBordo(PaletteColori.ROSSO);
+        lblConfermaPassword.setForeground(PaletteColori.ROSSO);
+        lblConfermaPassword.setText("Conferma password - " + messaggio);
+        pswConfermaPassword.setIcona(SCUDO_ROSSO);
+    }
+
     public void RegistraFont() {
         try {
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -482,21 +652,21 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblConfermaPassword;
     private javax.swing.JLabel lblIstruzioni;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblRipetiPassword;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JPanel pnlBottoni;
     private javax.swing.JPanel pnlDati;
     private javax.swing.JPanel pnlRegistrati;
     private javax.swing.JPanel pnlWelcome;
-    private componenti.RoundPasswordField pswPassword;
-    private componenti.RoundPasswordField pswRipetiPassword;
+    private componenti.RoundPasswordFieldIcon pswConfermaPassword;
+    private componenti.RoundPasswordFieldIcon pswPassword;
     private componenti.RoundButton roundButton1;
     private componenti.RoundButton roundButton2;
     private javax.swing.JSeparator sprLinea1;
     private javax.swing.JSeparator sprLinea2;
-    private componenti.RoundTextField txtUsername;
+    private componenti.RoundTextFieldIcon txtUsername;
     // End of variables declaration//GEN-END:variables
 
 }
