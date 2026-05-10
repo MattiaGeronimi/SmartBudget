@@ -21,6 +21,8 @@ public class FrmHome extends javax.swing.JFrame {
     //Font
     public Font fontSaldo = new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 50);
    
+    //IMPORT ICONE 
+    
     //Icona menu chiara
     ImageIcon menuIconLight = new ImageIcon(getClass().getResource("/immagini/MenuIconLight.png"));
     Image menuIconScaledLight = menuIconLight.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
@@ -29,6 +31,43 @@ public class FrmHome extends javax.swing.JFrame {
     ImageIcon menuIconDark = new ImageIcon(getClass().getResource("/immagini/MenuIconDark.png"));
     Image menuIconScaledDark = menuIconDark.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
     
+    //Icona home chiara
+    ImageIcon homeIconLight = new ImageIcon(getClass().getResource("/immagini/HomeIconLight.png"));
+    Image homeIconScaledLight = homeIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Icona home scura
+    ImageIcon homeIconDark = new ImageIcon(getClass().getResource("/immagini/HomeIconDark.png"));
+    Image homeIconScaledDark = homeIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    
+    //Icona piu chiara
+    ImageIcon piuIconLight = new ImageIcon(getClass().getResource("/immagini/PiuIconLight.png"));
+    Image piuIconScaledLight = piuIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Icona piu scura
+    ImageIcon piuIconDark = new ImageIcon(getClass().getResource("/immagini/PiuIconDark.png"));
+    Image piuIconScaledDark = piuIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    
+    //Icona meno chiara
+    ImageIcon menoIconLight = new ImageIcon(getClass().getResource("/immagini/MenoIconLight.png"));
+    Image menoIconScaledLight = menoIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Icona meno scura
+    ImageIcon menoIconDark = new ImageIcon(getClass().getResource("/immagini/MenoIconDark.png"));
+    Image menoIconScaledDark = menoIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    
+    //Icona incremento chiara
+    ImageIcon increaseIconLight = new ImageIcon(getClass().getResource("/immagini/IncreaseIconLight.png"));
+    Image increaseIconScaledLight = increaseIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Icona incremento scura
+    ImageIcon increaseIconDark = new ImageIcon(getClass().getResource("/immagini/IncreaseIconDark.png"));
+    Image increaseIconScaledDark = increaseIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    
+    //Icona profilo chiara
+    ImageIcon profileIconLight = new ImageIcon(getClass().getResource("/immagini/ProfileIconLight.png"));
+    Image profileIconScaledLight = profileIconLight.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+    //Icona profilo scura
+    ImageIcon profileIconDark = new ImageIcon(getClass().getResource("/immagini/ProfileIconDark.png"));
+    Image profileIconScaledDark = profileIconDark.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+    
+    
+    //COSTRUTTORE FRAME
     public FrmHome() 
     {
         RegistraFont();                             //Metodo per importare i Font 
@@ -45,12 +84,45 @@ public class FrmHome extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(iconURL);
         this.setIconImage(icon.getImage());
         
+        //IMPOSTAZIONI BOTTONI 
         //Bottone Menu
         BtnMenu.setFocusPainted(false);
         BtnMenu.setBorderPainted(false);
         BtnMenu.setContentAreaFilled(false);
-        BtnMenu.setOpaque(false);      
+        BtnMenu.setOpaque(false);  
         
+        //Bottone Home
+        BtnHome.setFocusPainted(false);
+        BtnHome.setBorderPainted(false);
+        BtnHome.setContentAreaFilled(false);
+        BtnHome.setOpaque(false); 
+        
+        //Bottone Piu
+        BtnPiu.setFocusPainted(false);
+        BtnPiu.setBorderPainted(false);
+        BtnPiu.setContentAreaFilled(false);
+        BtnPiu.setOpaque(false); 
+        
+        //Bottone Meno
+        BtnMeno.setFocusPainted(false);
+        BtnMeno.setBorderPainted(false);
+        BtnMeno.setContentAreaFilled(false);
+        BtnMeno.setOpaque(false); 
+        
+        //Bottone Incremento
+        BtnIncrease.setFocusPainted(false);
+        BtnIncrease.setBorderPainted(false);
+        BtnIncrease.setContentAreaFilled(false);
+        BtnIncrease.setOpaque(false);
+        
+        //Bottone Profilo
+        BtnProfilo.setFocusPainted(false);
+        BtnProfilo.setBorderPainted(false);
+        BtnProfilo.setContentAreaFilled(false);
+        BtnProfilo.setOpaque(false); 
+        
+        
+        //IMPOSTAZIONI MENU LATERALE
         //Pannello menu
         menu.setBounds(-200, 100, 200, 700);        //Disegna il menu fuori dallo schermo,
         menu.setVisible(false);                     //Non visibile,
@@ -93,6 +165,11 @@ public class FrmHome extends javax.swing.JFrame {
             menu.setLabelsColor(PaletteColori.NERO);
             jLabel1.setForeground(PaletteColori.NERO);
             BtnMenu.setIcon(new ImageIcon(menuIconScaledDark));
+            BtnHome.setIcon(new ImageIcon(homeIconScaledDark));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledDark));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledDark));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledDark));
+            BtnProfilo.setIcon(new ImageIcon(profileIconScaledDark));
         }
         else
         {
@@ -104,6 +181,11 @@ public class FrmHome extends javax.swing.JFrame {
             menu.setLabelsColor(PaletteColori.BIANCO);
             jLabel1.setForeground(PaletteColori.BIANCO);
             BtnMenu.setIcon(new ImageIcon(menuIconScaledLight));
+            BtnHome.setIcon(new ImageIcon(homeIconScaledLight));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledLight));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledLight));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledLight));
+            BtnProfilo.setIcon(new ImageIcon(profileIconScaledLight));
         }  
         menu.disegnaComboBox(tema);
         PnlGradient.setColore2(coloreSecondario);
@@ -143,8 +225,14 @@ public class FrmHome extends javax.swing.JFrame {
         PnlContenuto = new javax.swing.JPanel();
         PnlHeader = new javax.swing.JPanel();
         BtnMenu = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(220, 100), new java.awt.Dimension(0, 0));
+        BtnProfilo = new javax.swing.JButton();
         PnlBottomMenu = new javax.swing.JPanel();
         MenuBar = new componenti.RoundPanel();
+        BtnHome = new javax.swing.JButton();
+        BtnPiu = new javax.swing.JButton();
+        BtnMeno = new javax.swing.JButton();
+        BtnIncrease = new javax.swing.JButton();
         PnlScheda = new javax.swing.JPanel();
         PnlGradient = new componenti.GradientPanel();
         PnlSaldo = new javax.swing.JPanel();
@@ -184,17 +272,34 @@ public class FrmHome extends javax.swing.JFrame {
             }
         });
 
+        BtnProfilo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnProfilo.setMaximumSize(new java.awt.Dimension(100, 100));
+        BtnProfilo.setMinimumSize(new java.awt.Dimension(100, 100));
+        BtnProfilo.setPreferredSize(new java.awt.Dimension(100, 100));
+        BtnProfilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnProfiloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PnlHeaderLayout = new javax.swing.GroupLayout(PnlHeader);
         PnlHeader.setLayout(PnlHeaderLayout);
         PnlHeaderLayout.setHorizontalGroup(
             PnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlHeaderLayout.createSequentialGroup()
                 .addComponent(BtnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BtnProfilo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PnlHeaderLayout.setVerticalGroup(
             PnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BtnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BtnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .addGroup(PnlHeaderLayout.createSequentialGroup()
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(BtnProfilo, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
         );
 
         PnlBottomMenu.setBackground(PaletteColori.VERDE);
@@ -208,17 +313,19 @@ public class FrmHome extends javax.swing.JFrame {
         MenuBar.setMinimumSize(new java.awt.Dimension(380, 80));
         MenuBar.setPreferredSize(new java.awt.Dimension(380, 80));
         MenuBar.setRaggio(50);
+        MenuBar.setLayout(new java.awt.GridLayout());
 
-        javax.swing.GroupLayout MenuBarLayout = new javax.swing.GroupLayout(MenuBar);
-        MenuBar.setLayout(MenuBarLayout);
-        MenuBarLayout.setHorizontalGroup(
-            MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
-        );
-        MenuBarLayout.setVerticalGroup(
-            MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
+        BtnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MenuBar.add(BtnHome);
+
+        BtnPiu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MenuBar.add(BtnPiu);
+
+        BtnMeno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MenuBar.add(BtnMeno);
+
+        BtnIncrease.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MenuBar.add(BtnIncrease);
 
         PnlBottomMenu.add(MenuBar, new java.awt.GridBagConstraints());
 
@@ -377,6 +484,10 @@ public class FrmHome extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnMenuActionPerformed
 
+    private void BtnProfiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProfiloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnProfiloActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -419,7 +530,12 @@ public class FrmHome extends javax.swing.JFrame {
     public Color coloreSecondario;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnHome;
+    private javax.swing.JButton BtnIncrease;
+    private javax.swing.JButton BtnMeno;
     private javax.swing.JButton BtnMenu;
+    private javax.swing.JButton BtnPiu;
+    private javax.swing.JButton BtnProfilo;
     private componenti.RoundPanel MenuBar;
     private javax.swing.JPanel PnlBottomMenu;
     private javax.swing.JPanel PnlContenuto;
@@ -429,6 +545,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLayeredPane PnlLayer;
     private javax.swing.JPanel PnlSaldo;
     private javax.swing.JPanel PnlScheda;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
