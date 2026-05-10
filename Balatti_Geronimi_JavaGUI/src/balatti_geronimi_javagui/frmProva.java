@@ -48,12 +48,20 @@ public class frmProva extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         pnlRegistrati = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        roundTextField1 = new balatti_geronimi_javagui.RoundTextField();
+        roundTextField2 = new balatti_geronimi_javagui.RoundTextField();
+        roundTextField3 = new balatti_geronimi_javagui.RoundTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        imageLabel2 = new balatti_geronimi_javagui.ImageLabel();
+        jLabel6 = new javax.swing.JLabel();
         gradientPanel2 = new balatti_geronimi_javagui.GradientPanel();
         jPanel2 = new javax.swing.JPanel();
         roundButton3 = new balatti_geronimi_javagui.RoundButton();
         roundButton4 = new balatti_geronimi_javagui.RoundButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        imageLabel2 = new balatti_geronimi_javagui.ImageLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(420, 800));
@@ -157,6 +165,68 @@ public class frmProva extends javax.swing.JFrame {
         pnlRegistrati.setPreferredSize(new java.awt.Dimension(420, 800));
         pnlRegistrati.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20));
+        jLabel4.setForeground(new java.awt.Color(25, 45, 98));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Inserisci i dati per continuare");
+        jLabel4.setAlignmentX(0.5F);
+        jLabel4.setPreferredSize(new java.awt.Dimension(37, 50));
+        pnlRegistrati.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 420, 40));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        roundTextField1.setText("roundTextField1");
+        roundTextField1.setColoreBordo(PaletteColori.BLU);
+        roundTextField1.setRaggio(40);
+        jPanel3.add(roundTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 330, 60));
+
+        roundTextField2.setText("roundTextField2");
+        roundTextField2.setColoreBordo(PaletteColori.BLU);
+        roundTextField2.setRaggio(40);
+        jPanel3.add(roundTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 330, 60));
+
+        roundTextField3.setText("roundTextField2");
+        roundTextField3.setColoreBordo(PaletteColori.BLU);
+        roundTextField3.setRaggio(40);
+        jPanel3.add(roundTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 330, 60));
+
+        jLabel7.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 14)
+        );
+        jLabel7.setForeground(new java.awt.Color(25, 45, 98));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setText("Username");
+        jLabel7.setAlignmentX(0.5F);
+        jLabel7.setPreferredSize(new java.awt.Dimension(37, 50));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 370, -1));
+
+        jLabel5.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 14)
+        );
+        jLabel5.setForeground(new java.awt.Color(25, 45, 98));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Ripeti password");
+        jLabel5.setAlignmentX(0.5F);
+        jLabel5.setPreferredSize(new java.awt.Dimension(37, 50));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 440, -1));
+
+        pnlRegistrati.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 360, 380));
+
+        jSeparator2.setForeground(PaletteColori.BLU);
+        pnlRegistrati.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 330, 40));
+
+        imageLabel2.setImmagine("/immagini/logo.png");
+        pnlRegistrati.add(imageLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 480, 210));
+
+        jLabel6.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 14)
+        );
+        jLabel6.setForeground(new java.awt.Color(25, 45, 98));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("Password");
+        jLabel6.setAlignmentX(0.5F);
+        jLabel6.setPreferredSize(new java.awt.Dimension(37, 50));
+        pnlRegistrati.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 370, -1));
+
         gradientPanel2.setBackground(java.awt.Color.white);
         gradientPanel2.setColore1(java.awt.Color.white);
         gradientPanel2.setColore2(PaletteColori.VERDE);
@@ -191,7 +261,7 @@ public class frmProva extends javax.swing.JFrame {
         jPanel2.add(roundButton3);
 
         roundButton4.setForeground(PaletteColori.BLU);
-        roundButton4.setText("Login");
+        roundButton4.setText("Anulla");
         roundButton4.setColoreBordo(java.awt.Color.white);
         roundButton4.setColoreHover(PaletteColori.BLU);
         roundButton4.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
@@ -215,12 +285,6 @@ public class frmProva extends javax.swing.JFrame {
         gradientPanel2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 420, 170));
 
         pnlRegistrati.add(gradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 420, 400));
-
-        jSeparator2.setForeground(PaletteColori.BLU);
-        pnlRegistrati.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 330, 40));
-
-        imageLabel2.setImmagine("/immagini/logo.png");
-        pnlRegistrati.add(imageLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 480, 360));
 
         getContentPane().add(pnlRegistrati, "Registrati");
 
@@ -340,8 +404,13 @@ public class frmProva extends javax.swing.JFrame {
     private balatti_geronimi_javagui.ImageLabel imageLabel2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel pnlRegistrati;
@@ -350,5 +419,8 @@ public class frmProva extends javax.swing.JFrame {
     private balatti_geronimi_javagui.RoundButton roundButton2;
     private balatti_geronimi_javagui.RoundButton roundButton3;
     private balatti_geronimi_javagui.RoundButton roundButton4;
+    private balatti_geronimi_javagui.RoundTextField roundTextField1;
+    private balatti_geronimi_javagui.RoundTextField roundTextField2;
+    private balatti_geronimi_javagui.RoundTextField roundTextField3;
     // End of variables declaration//GEN-END:variables
 }

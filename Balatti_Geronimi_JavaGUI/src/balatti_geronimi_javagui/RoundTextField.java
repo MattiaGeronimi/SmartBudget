@@ -19,7 +19,9 @@ public class RoundTextField extends JTextField {
 
     public RoundTextField() {
         super();
-        setOpaque(false);
+        setOpaque(false);             
+        //setBorder(null);      
+        setBackground(new Color(0,0,0,0));
         setMargine();
     }
 
