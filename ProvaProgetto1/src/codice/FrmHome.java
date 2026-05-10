@@ -20,54 +20,98 @@ public class FrmHome extends javax.swing.JFrame {
      */
     //Font
     public Font fontSaldo = new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 50);
-   
-    //IMPORT ICONE 
-    
-    //Icona menu chiara
-    ImageIcon menuIconLight = new ImageIcon(getClass().getResource("/immagini/MenuIconLight.png"));
-    Image menuIconScaledLight = menuIconLight.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+    private CardLayout card;
+    private String selectedCard = "home";
 
-    //Icona menu scura
-    ImageIcon menuIconDark = new ImageIcon(getClass().getResource("/immagini/MenuIconDark.png"));
-    Image menuIconScaledDark = menuIconDark.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+    // <editor-fold defaultstate="collapsed" desc="Import Icone/Immagini">
+    //Menu
+        //Icona menu chiara
+        ImageIcon menuIconLight = new ImageIcon(getClass().getResource("/immagini/MenuIconLight.png"));
+        Image menuIconScaledLight = menuIconLight.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        //Icona menu scura
+        ImageIcon menuIconDark = new ImageIcon(getClass().getResource("/immagini/MenuIconDark.png"));
+        Image menuIconScaledDark = menuIconDark.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
     
-    //Icona home chiara
-    ImageIcon homeIconLight = new ImageIcon(getClass().getResource("/immagini/HomeIconLight.png"));
-    Image homeIconScaledLight = homeIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
-    //Icona home scura
-    ImageIcon homeIconDark = new ImageIcon(getClass().getResource("/immagini/HomeIconDark.png"));
-    Image homeIconScaledDark = homeIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Home
+        //Icona home chiara
+        ImageIcon homeIconLight = new ImageIcon(getClass().getResource("/immagini/HomeIconLight.png"));
+        Image homeIconScaledLight = homeIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home scura
+        ImageIcon homeIconDark = new ImageIcon(getClass().getResource("/immagini/HomeIconDark.png"));
+        Image homeIconScaledDark = homeIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home verde
+        ImageIcon homeIconVerde = new ImageIcon(getClass().getResource("/immagini/HomeIconVerde.png"));
+        Image homeIconScaledVerde = homeIconVerde.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home rossa
+        ImageIcon homeIconRossa = new ImageIcon(getClass().getResource("/immagini/HomeIconRosso.png"));
+        Image homeIconScaledRossa = homeIconRossa.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home Blu
+        ImageIcon homeIconBlu = new ImageIcon(getClass().getResource("/immagini/HomeIconBlu.png"));
+        Image homeIconScaledBlu = homeIconBlu.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
     
-    //Icona piu chiara
-    ImageIcon piuIconLight = new ImageIcon(getClass().getResource("/immagini/PiuIconLight.png"));
-    Image piuIconScaledLight = piuIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
-    //Icona piu scura
-    ImageIcon piuIconDark = new ImageIcon(getClass().getResource("/immagini/PiuIconDark.png"));
-    Image piuIconScaledDark = piuIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Piu
+        //Icona piu chiara
+        ImageIcon piuIconLight = new ImageIcon(getClass().getResource("/immagini/PiuIconLight.png"));
+        Image piuIconScaledLight = piuIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona piu scura
+        ImageIcon piuIconDark = new ImageIcon(getClass().getResource("/immagini/PiuIconDark.png"));
+        Image piuIconScaledDark = piuIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home verde
+        ImageIcon piuIconVerde = new ImageIcon(getClass().getResource("/immagini/PiuIconVerde.png"));
+        Image piuIconScaledVerde = piuIconVerde.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home rossa
+        ImageIcon piuIconRossa = new ImageIcon(getClass().getResource("/immagini/PiuIconRosso.png"));
+        Image piuIconScaledRossa = piuIconRossa.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home Blu
+        ImageIcon piuIconBlu = new ImageIcon(getClass().getResource("/immagini/PiuIconBlu.png"));
+        Image piuIconScaledBlu = piuIconBlu.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
     
-    //Icona meno chiara
-    ImageIcon menoIconLight = new ImageIcon(getClass().getResource("/immagini/MenoIconLight.png"));
-    Image menoIconScaledLight = menoIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
-    //Icona meno scura
-    ImageIcon menoIconDark = new ImageIcon(getClass().getResource("/immagini/MenoIconDark.png"));
-    Image menoIconScaledDark = menoIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Meno
+        //Icona meno chiara
+        ImageIcon menoIconLight = new ImageIcon(getClass().getResource("/immagini/MenoIconLight.png"));
+        Image menoIconScaledLight = menoIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona meno scura
+        ImageIcon menoIconDark = new ImageIcon(getClass().getResource("/immagini/MenoIconDark.png"));
+        Image menoIconScaledDark = menoIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home verde
+        ImageIcon menoIconVerde = new ImageIcon(getClass().getResource("/immagini/MenoIconVerde.png"));
+        Image menoIconScaledVerde = menoIconVerde.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home rossa
+        ImageIcon menoIconRossa = new ImageIcon(getClass().getResource("/immagini/MenoIconRosso.png"));
+        Image menoIconScaledRossa = menoIconRossa.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home Blu
+        ImageIcon menoIconBlu = new ImageIcon(getClass().getResource("/immagini/MenoIconBlu.png"));
+        Image menoIconScaledBlu = menoIconBlu.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
     
-    //Icona incremento chiara
-    ImageIcon increaseIconLight = new ImageIcon(getClass().getResource("/immagini/IncreaseIconLight.png"));
-    Image increaseIconScaledLight = increaseIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
-    //Icona incremento scura
-    ImageIcon increaseIconDark = new ImageIcon(getClass().getResource("/immagini/IncreaseIconDark.png"));
-    Image increaseIconScaledDark = increaseIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+    //Incremento 
+        //Icona incremento chiara
+        ImageIcon increaseIconLight = new ImageIcon(getClass().getResource("/immagini/IncreaseIconLight.png"));
+        Image increaseIconScaledLight = increaseIconLight.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona incremento scura
+        ImageIcon increaseIconDark = new ImageIcon(getClass().getResource("/immagini/IncreaseIconDark.png"));
+        Image increaseIconScaledDark = increaseIconDark.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home verde
+        ImageIcon increaseIconVerde = new ImageIcon(getClass().getResource("/immagini/IncreaseIconVerde.png"));
+        Image increaseIconScaledVerde = increaseIconVerde.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home rossa
+        ImageIcon increaseIconRossa = new ImageIcon(getClass().getResource("/immagini/IncreaseIconRosso.png"));
+        Image increaseIconScaledRossa = increaseIconRossa.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        //Icona home Blu
+        ImageIcon increaseIconBlu = new ImageIcon(getClass().getResource("/immagini/IncreaseIconBlu.png"));
+        Image increaseIconScaledBlu = increaseIconBlu.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH); 
     
-    //Icona profilo chiara
-    ImageIcon profileIconLight = new ImageIcon(getClass().getResource("/immagini/ProfileIconLight.png"));
-    Image profileIconScaledLight = profileIconLight.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-    //Icona profilo scura
-    ImageIcon profileIconDark = new ImageIcon(getClass().getResource("/immagini/ProfileIconDark.png"));
-    Image profileIconScaledDark = profileIconDark.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+    //Profilo
+        //Icona profilo chiara
+        ImageIcon profileIconLight = new ImageIcon(getClass().getResource("/immagini/ProfileIconLight.png"));
+        Image profileIconScaledLight = profileIconLight.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        //Icona profilo scura
+        ImageIcon profileIconDark = new ImageIcon(getClass().getResource("/immagini/ProfileIconDark.png"));
+        Image profileIconScaledDark = profileIconDark.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
     
+    // </editor-fold>
     
-    //COSTRUTTORE FRAME
+
+    //COSTRUTTORE FRAME   
     public FrmHome() 
     {
         RegistraFont();                             //Metodo per importare i Font 
@@ -83,8 +127,8 @@ public class FrmHome extends javax.swing.JFrame {
         URL iconURL = getClass().getResource("/immagini/icona.png");
         ImageIcon icon = new ImageIcon(iconURL);
         this.setIconImage(icon.getImage());
-        
-        //IMPOSTAZIONI BOTTONI 
+                   
+        // <editor-fold defaultstate="collapsed" desc="IMPOSTAZIONE BOTTONI">
         //Bottone Menu
         BtnMenu.setFocusPainted(false);
         BtnMenu.setBorderPainted(false);
@@ -120,7 +164,11 @@ public class FrmHome extends javax.swing.JFrame {
         BtnProfilo.setBorderPainted(false);
         BtnProfilo.setContentAreaFilled(false);
         BtnProfilo.setOpaque(false); 
+        // </editor-fold>
         
+        
+        //Card Layout
+        card = (CardLayout) PnlScheda.getLayout();
         
         //IMPOSTAZIONI MENU LATERALE
         //Pannello menu
@@ -158,7 +206,10 @@ public class FrmHome extends javax.swing.JFrame {
         if(tema == ColorMode.CHIARO)
         {
             PnlHeader.setBackground(PaletteColori.BIANCO);
-            PnlGradient.setColore1(PaletteColori.BIANCO);
+            PnlHome.setColore1(PaletteColori.BIANCO);
+            PnlResoconto.setColore1(PaletteColori.BIANCO);
+            PnlEntrata.setColore1(PaletteColori.BIANCO);
+            PnlSpesa.setColore1(PaletteColori.BIANCO);            
             menu.setBackground(PaletteColori.BIANCO);
             MenuBar.setBackground(PaletteColori.BIANCO);
             MenuBar.setColoreBordo(PaletteColori.BIANCO);
@@ -174,7 +225,10 @@ public class FrmHome extends javax.swing.JFrame {
         else
         {
             PnlHeader.setBackground(PaletteColori.NERO);
-            PnlGradient.setColore1(PaletteColori.NERO);
+            PnlHome.setColore1(PaletteColori.NERO);
+            PnlResoconto.setColore1(PaletteColori.NERO);
+            PnlEntrata.setColore1(PaletteColori.NERO);
+            PnlSpesa.setColore1(PaletteColori.NERO);    
             menu.setBackground(PaletteColori.NERO);
             MenuBar.setBackground(PaletteColori.NERO);
             MenuBar.setColoreBordo(PaletteColori.NERO);
@@ -188,10 +242,81 @@ public class FrmHome extends javax.swing.JFrame {
             BtnProfilo.setIcon(new ImageIcon(profileIconScaledLight));
         }  
         menu.disegnaComboBox(tema);
-        PnlGradient.setColore2(coloreSecondario);
+        PnlHome.setColore2(coloreSecondario);
+        PnlResoconto.setColore2(coloreSecondario);
+        PnlEntrata.setColore2(coloreSecondario);
+        PnlSpesa.setColore2(coloreSecondario);
         PnlBottomMenu.setBackground(coloreSecondario);
+        this.setMenuBarIcon();
     }
     
+    public void setMenuBarIcon()
+    {
+       
+        if(selectedCard == "home")
+        {
+            if(coloreSecondario == PaletteColori.ROSSO)
+            {
+                BtnHome.setIcon(new ImageIcon(homeIconScaledRossa));
+            }
+            else if(coloreSecondario == PaletteColori.BLU)
+            {
+                BtnHome.setIcon(new ImageIcon(homeIconScaledBlu));
+            }
+            else
+            {
+                BtnHome.setIcon(new ImageIcon(homeIconScaledVerde));
+            }
+        }
+        else if (selectedCard == "entrata")
+        {
+            if(coloreSecondario == PaletteColori.ROSSO)
+            {
+                BtnPiu.setIcon(new ImageIcon(piuIconScaledRossa));
+            }
+            else if(coloreSecondario == PaletteColori.BLU)
+            {
+                BtnPiu.setIcon(new ImageIcon(piuIconScaledBlu));
+            }
+            else
+            {
+                BtnPiu.setIcon(new ImageIcon(piuIconScaledVerde));
+            }
+        }
+        else if (selectedCard == "spesa")
+        {
+            if(coloreSecondario == PaletteColori.ROSSO)
+            {
+                BtnMeno.setIcon(new ImageIcon(menoIconScaledRossa));
+            }
+            else if(coloreSecondario == PaletteColori.BLU)
+            {
+                BtnMeno.setIcon(new ImageIcon(menoIconScaledBlu));
+            }
+            else
+            {
+                BtnMeno.setIcon(new ImageIcon(menoIconScaledVerde));
+            }
+        }
+        else if (selectedCard == "resoconto")
+        {
+            if(coloreSecondario == PaletteColori.ROSSO)
+            {
+                BtnIncrease.setIcon(new ImageIcon(increaseIconScaledRossa));
+            }
+            else if(coloreSecondario == PaletteColori.BLU)
+            {
+                BtnIncrease.setIcon(new ImageIcon(increaseIconScaledBlu));
+            }
+            else
+            {
+                BtnIncrease.setIcon(new ImageIcon(increaseIconScaledVerde));
+            }
+        }
+        
+        
+    }
+       
     //Cambia tema
     public void setTema()
     {
@@ -234,9 +359,12 @@ public class FrmHome extends javax.swing.JFrame {
         BtnMeno = new javax.swing.JButton();
         BtnIncrease = new javax.swing.JButton();
         PnlScheda = new javax.swing.JPanel();
-        PnlGradient = new componenti.GradientPanel();
+        PnlHome = new componenti.GradientPanel();
         PnlSaldo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        PnlEntrata = new componenti.GradientPanel();
+        PnlResoconto = new componenti.GradientPanel();
+        PnlSpesa = new componenti.GradientPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.darkGray);
@@ -316,26 +444,46 @@ public class FrmHome extends javax.swing.JFrame {
         MenuBar.setLayout(new java.awt.GridLayout());
 
         BtnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHomeActionPerformed(evt);
+            }
+        });
         MenuBar.add(BtnHome);
 
         BtnPiu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnPiu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPiuActionPerformed(evt);
+            }
+        });
         MenuBar.add(BtnPiu);
 
         BtnMeno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnMeno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnMenoActionPerformed(evt);
+            }
+        });
         MenuBar.add(BtnMeno);
 
         BtnIncrease.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnIncrease.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnIncreaseActionPerformed(evt);
+            }
+        });
         MenuBar.add(BtnIncrease);
 
         PnlBottomMenu.add(MenuBar, new java.awt.GridBagConstraints());
 
         PnlScheda.setLayout(new java.awt.CardLayout());
 
-        PnlGradient.setColore1(new java.awt.Color(14, 17, 17));
-        PnlGradient.setColore2(new java.awt.Color(37, 178, 146));
-        PnlGradient.setMaximumSize(new java.awt.Dimension(420, 600));
-        PnlGradient.setMinimumSize(new java.awt.Dimension(420, 600));
-        PnlGradient.setPreferredSize(new java.awt.Dimension(420, 600));
+        PnlHome.setColore1(new java.awt.Color(14, 17, 17));
+        PnlHome.setColore2(new java.awt.Color(37, 178, 146));
+        PnlHome.setMaximumSize(new java.awt.Dimension(420, 600));
+        PnlHome.setMinimumSize(new java.awt.Dimension(420, 600));
+        PnlHome.setPreferredSize(new java.awt.Dimension(420, 600));
 
         PnlSaldo.setBackground(java.awt.Color.black);
         PnlSaldo.setMaximumSize(new java.awt.Dimension(420, 200));
@@ -354,20 +502,74 @@ public class FrmHome extends javax.swing.JFrame {
         jLabel1.setRequestFocusEnabled(false);
         PnlSaldo.add(jLabel1, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout PnlGradientLayout = new javax.swing.GroupLayout(PnlGradient);
-        PnlGradient.setLayout(PnlGradientLayout);
-        PnlGradientLayout.setHorizontalGroup(
-            PnlGradientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout PnlHomeLayout = new javax.swing.GroupLayout(PnlHome);
+        PnlHome.setLayout(PnlHomeLayout);
+        PnlHomeLayout.setHorizontalGroup(
+            PnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PnlSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        PnlGradientLayout.setVerticalGroup(
-            PnlGradientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PnlGradientLayout.createSequentialGroup()
+        PnlHomeLayout.setVerticalGroup(
+            PnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PnlHomeLayout.createSequentialGroup()
                 .addComponent(PnlSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 400, Short.MAX_VALUE))
         );
 
-        PnlScheda.add(PnlGradient, "card2");
+        PnlScheda.add(PnlHome, "CardHome");
+
+        PnlEntrata.setColore1(new java.awt.Color(14, 17, 17));
+        PnlEntrata.setColore2(new java.awt.Color(37, 178, 146));
+        PnlEntrata.setMaximumSize(new java.awt.Dimension(420, 600));
+        PnlEntrata.setMinimumSize(new java.awt.Dimension(420, 600));
+
+        javax.swing.GroupLayout PnlEntrataLayout = new javax.swing.GroupLayout(PnlEntrata);
+        PnlEntrata.setLayout(PnlEntrataLayout);
+        PnlEntrataLayout.setHorizontalGroup(
+            PnlEntrataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+        PnlEntrataLayout.setVerticalGroup(
+            PnlEntrataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        PnlScheda.add(PnlEntrata, "CardEntrata");
+
+        PnlResoconto.setColore1(new java.awt.Color(14, 17, 17));
+        PnlResoconto.setColore2(new java.awt.Color(37, 178, 146));
+        PnlResoconto.setMaximumSize(new java.awt.Dimension(420, 600));
+        PnlResoconto.setMinimumSize(new java.awt.Dimension(420, 600));
+
+        javax.swing.GroupLayout PnlResocontoLayout = new javax.swing.GroupLayout(PnlResoconto);
+        PnlResoconto.setLayout(PnlResocontoLayout);
+        PnlResocontoLayout.setHorizontalGroup(
+            PnlResocontoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+        PnlResocontoLayout.setVerticalGroup(
+            PnlResocontoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        PnlScheda.add(PnlResoconto, "CardResoconto");
+
+        PnlSpesa.setColore1(new java.awt.Color(14, 17, 17));
+        PnlSpesa.setColore2(new java.awt.Color(37, 178, 146));
+        PnlSpesa.setMaximumSize(new java.awt.Dimension(420, 600));
+        PnlSpesa.setMinimumSize(new java.awt.Dimension(420, 600));
+
+        javax.swing.GroupLayout PnlSpesaLayout = new javax.swing.GroupLayout(PnlSpesa);
+        PnlSpesa.setLayout(PnlSpesaLayout);
+        PnlSpesaLayout.setHorizontalGroup(
+            PnlSpesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+        PnlSpesaLayout.setVerticalGroup(
+            PnlSpesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        PnlScheda.add(PnlSpesa, "CardSpesa");
 
         javax.swing.GroupLayout PnlContenutoLayout = new javax.swing.GroupLayout(PnlContenuto);
         PnlContenuto.setLayout(PnlContenutoLayout);
@@ -485,8 +687,88 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnMenuActionPerformed
 
     private void BtnProfiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProfiloActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BtnProfiloActionPerformed
+
+    private void BtnPiuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPiuActionPerformed
+        card.show(PnlScheda, "CardEntrata");
+        if(this.getTema() == ColorMode.CHIARO)
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledDark));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledDark));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledDark));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledDark));
+        }
+        else
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledLight));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledLight));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledLight));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledLight));
+        }             
+        selectedCard = "entrata";
+        this.setMenuBarIcon();
+    }//GEN-LAST:event_BtnPiuActionPerformed
+
+    private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
+        card.show(PnlScheda, "CardHome");
+        if(this.getTema() == ColorMode.CHIARO)
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledDark));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledDark));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledDark));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledDark));
+        }
+        else
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledLight));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledLight));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledLight));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledLight));
+        }
+        selectedCard = "home";
+        this.setMenuBarIcon();
+    }//GEN-LAST:event_BtnHomeActionPerformed
+
+    private void BtnMenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenoActionPerformed
+        card.show(PnlScheda, "CardSpesa");
+        if(this.getTema() == ColorMode.CHIARO)
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledDark));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledDark));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledDark));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledDark));
+        }
+        else
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledLight));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledLight));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledLight));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledLight));
+        }
+        selectedCard = "spesa";
+        this.setMenuBarIcon();
+    }//GEN-LAST:event_BtnMenoActionPerformed
+
+    private void BtnIncreaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIncreaseActionPerformed
+        card.show(PnlScheda, "CardResoconto");
+        if(this.getTema() == ColorMode.CHIARO)
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledDark));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledDark));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledDark));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledDark));
+        }
+        else
+        {
+            BtnHome.setIcon(new ImageIcon(homeIconScaledLight));
+            BtnPiu.setIcon(new ImageIcon(piuIconScaledLight));
+            BtnMeno.setIcon(new ImageIcon(menoIconScaledLight));
+            BtnIncrease.setIcon(new ImageIcon(increaseIconScaledLight));
+        }
+        selectedCard = "resoconto";
+        this.setMenuBarIcon();
+    }//GEN-LAST:event_BtnIncreaseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -539,12 +821,15 @@ public class FrmHome extends javax.swing.JFrame {
     private componenti.RoundPanel MenuBar;
     private javax.swing.JPanel PnlBottomMenu;
     private javax.swing.JPanel PnlContenuto;
+    private componenti.GradientPanel PnlEntrata;
     private javax.swing.JPanel PnlFinestra;
-    private componenti.GradientPanel PnlGradient;
     private javax.swing.JPanel PnlHeader;
+    private componenti.GradientPanel PnlHome;
     private javax.swing.JLayeredPane PnlLayer;
+    private componenti.GradientPanel PnlResoconto;
     private javax.swing.JPanel PnlSaldo;
     private javax.swing.JPanel PnlScheda;
+    private componenti.GradientPanel PnlSpesa;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
