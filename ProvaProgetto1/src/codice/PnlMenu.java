@@ -4,6 +4,7 @@ package codice;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+import componenti.PaletteColori;
 import java.awt.*;
 import javax.swing.*;
 /**
@@ -12,7 +13,9 @@ import javax.swing.*;
  */
 public class PnlMenu extends javax.swing.JPanel {
 
+    //Variabile per contenere il frame padre
     private FrmHome frame;
+    //Dichiarazione Font per le voci del Menu
     public Font font = new java.awt.Font("Montserrat Bold", java.awt.Font.PLAIN, 24);
     /**
      * Creates new form PnlMenu
@@ -22,8 +25,10 @@ public class PnlMenu extends javax.swing.JPanel {
         
     }
     
+    //Disegna ComboBox con tutte le impostazioni grafiche aggiornate
     public void disegnaComboBox(ColorMode tema)
     {
+        //Impostazione colori in base al tema
         Color backColor;
         Color textColor;
         if(tema == ColorMode.SCURO)
@@ -38,20 +43,20 @@ public class PnlMenu extends javax.swing.JPanel {
         }
         Color c2 = frame.coloreSecondario;
         
-        jComboBox1.setFont(font);
-        jComboBox1.setBackground(backColor);
-        jComboBox1.setForeground(textColor);
-        jComboBox1.setFocusable(false);
-        jComboBox1.setOpaque(false);
+        jComboBoxTema.setFont(font);
+        jComboBoxTema.setBackground(backColor);
+        jComboBoxTema.setForeground(textColor);
+        jComboBoxTema.setFocusable(false);
+        jComboBoxTema.setOpaque(false);
         
-        jComboBox1.setRenderer(new DefaultListCellRenderer()    //Modifica il Renderer della tendina che si apre nella Combobox
+        jComboBoxTema.setRenderer(new DefaultListCellRenderer()    //Modifica il Renderer della tendina che si apre nella Combobox
             {
                 @Override
                 public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                     JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                     label.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));       //Bordo
-                    label.setFont(font);
-                    label.setHorizontalAlignment(SwingConstants.CENTER);
+                    label.setFont(font);                                    //Font
+                    label.setHorizontalAlignment(SwingConstants.CENTER);    //Allineamento orizzontale
                     if (isSelected)     //Colora l'opzione selezionata
                     {       
                         label.setForeground(c2);    //Testo in colore secondario
@@ -68,7 +73,7 @@ public class PnlMenu extends javax.swing.JPanel {
             }
         );
         
-        jComboBox1.setUI(new javax.swing.plaf.basic.BasicComboBoxUI()       
+        jComboBoxTema.setUI(new javax.swing.plaf.basic.BasicComboBoxUI()       
             {
                 @Override
                 protected JButton createArrowButton()   //Modifica il bottone contenente la freccia della Combobox
@@ -85,15 +90,17 @@ public class PnlMenu extends javax.swing.JPanel {
 
                 @Override
                 public void paintCurrentValueBackground(Graphics g, Rectangle bounds, boolean hasFocus) {
-                    //Sovrascrivo il metodo vuoto per impedire il disegno di un rettangolo grigio di base
+                    //Sovrascrivo il metodo lasciandolo vuoto per impedire il disegno di un rettangolo grigio di base
                     //che si mostrerebbe come bordo nel design attuale
                 }              
             }
         );
     }
+    
+    //Imposta il colore del testo di tutte le voci del menu
     public void setLabelsColor(Color c)
     {
-        jLabel1.setForeground(c);
+        lblColorMode.setForeground(c);
         jLabel3.setForeground(c);
         jLabel4.setForeground(c);
         jLabel5.setForeground(c);
@@ -101,14 +108,16 @@ public class PnlMenu extends javax.swing.JPanel {
         jLabel7.setForeground(c);
     }
     
+    //Imposta attributo frame, metodo richiamato dal frame stesso
     public void setFrame(FrmHome frame)
     {
         this.frame = frame;
     }
     
+    //Imposta font personalizzato a tutte le voci del menu
     public void setFont()
     {
-        jLabel1.setFont(font);
+        lblColorMode.setFont(font);
         jLabel3.setFont(font);
         jLabel4.setFont(font);
         jLabel5.setFont(font);
@@ -125,10 +134,10 @@ public class PnlMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblColorMode = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxTema = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -144,29 +153,29 @@ public class PnlMenu extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(200, 700));
         setPreferredSize(new java.awt.Dimension(200, 700));
 
-        jLabel1.setBackground(new java.awt.Color(14, 17, 17));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SCURO");
-        jLabel1.setMaximumSize(new java.awt.Dimension(200, 100));
-        jLabel1.setMinimumSize(new java.awt.Dimension(200, 0));
-        jLabel1.setPreferredSize(new java.awt.Dimension(200, 75));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblColorMode.setBackground(new java.awt.Color(14, 17, 17));
+        lblColorMode.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblColorMode.setForeground(new java.awt.Color(255, 255, 255));
+        lblColorMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblColorMode.setText("SCURO");
+        lblColorMode.setMaximumSize(new java.awt.Dimension(200, 100));
+        lblColorMode.setMinimumSize(new java.awt.Dimension(200, 0));
+        lblColorMode.setPreferredSize(new java.awt.Dimension(200, 75));
+        lblColorMode.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblColorModeMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
+                lblColorModeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel1MouseExited(evt);
+                lblColorModeMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
+                lblColorModeMousePressed(evt);
             }
         });
-        add(jLabel1);
+        add(lblColorMode);
 
         jSeparator1.setMaximumSize(new java.awt.Dimension(100, 10));
         jSeparator1.setMinimumSize(new java.awt.Dimension(100, 0));
@@ -178,26 +187,26 @@ public class PnlMenu extends javax.swing.JPanel {
         jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 75));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 0, 51));
-        jComboBox1.setForeground(PaletteColori.NERO);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEMA", "VERDE", "ROSSO", "BLU" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jComboBox1.setFocusable(false);
-        jComboBox1.setPreferredSize(new java.awt.Dimension(175, 70));
-        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jComboBoxTema.setBackground(new java.awt.Color(255, 0, 51));
+        jComboBoxTema.setForeground(PaletteColori.NERO);
+        jComboBoxTema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEMA", "VERDE", "ROSSO", "BLU" }));
+        jComboBoxTema.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jComboBoxTema.setFocusable(false);
+        jComboBoxTema.setPreferredSize(new java.awt.Dimension(175, 70));
+        jComboBoxTema.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jComboBox1MouseEntered(evt);
+                jComboBoxTemaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jComboBox1MouseExited(evt);
+                jComboBoxTemaMouseExited(evt);
             }
         });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxTema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxTemaActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1);
+        jPanel1.add(jComboBoxTema);
 
         add(jPanel1);
 
@@ -270,59 +279,59 @@ public class PnlMenu extends javax.swing.JPanel {
         add(jLabel6);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblColorModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColorModeMouseClicked
 
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblColorModeMouseClicked
 
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        frame.setTema();
-        if(frame.getTema() == ColorMode.SCURO)
+    private void lblColorModeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColorModeMousePressed
+        frame.setTema();    //Cambia tema
+        if(frame.getTema() == ColorMode.SCURO)      //Cambia colori della label
         {
-            jLabel1.setText("CHIARO"); 
-            jLabel1.setBackground(PaletteColori.NERO);
+            lblColorMode.setText("CHIARO"); 
+            lblColorMode.setBackground(PaletteColori.NERO);
         }
         else
         {
-            jLabel1.setText("SCURO");
-            jLabel1.setBackground(PaletteColori.BIANCO);
+            lblColorMode.setText("SCURO");
+            lblColorMode.setBackground(PaletteColori.BIANCO);
         }
-        frame.colorMode();
-    }//GEN-LAST:event_jLabel1MousePressed
+        frame.colorMode();      //Aggiorna tutti i colori al nuovo tema
+    }//GEN-LAST:event_lblColorModeMousePressed
 
-    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-        jLabel1.setForeground(frame.coloreSecondario);       
-    }//GEN-LAST:event_jLabel1MouseEntered
+    private void lblColorModeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColorModeMouseEntered
+        lblColorMode.setForeground(frame.coloreSecondario);     //Hover con mouse, colore secondario     
+    }//GEN-LAST:event_lblColorModeMouseEntered
 
-    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
-        if(frame.getTema() == ColorMode.SCURO)
+    private void lblColorModeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblColorModeMouseExited
+        if(frame.getTema() == ColorMode.SCURO)      //Resetta a colore normale dopo Hover
         {
-            jLabel1.setForeground(PaletteColori.BIANCO);
+            lblColorMode.setForeground(PaletteColori.BIANCO);
         }
         else
         {
-            jLabel1.setForeground(PaletteColori.NERO);
+            lblColorMode.setForeground(PaletteColori.NERO);
         }
-    }//GEN-LAST:event_jLabel1MouseExited
+    }//GEN-LAST:event_lblColorModeMouseExited
 
-    private void jComboBox1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseEntered
-        jComboBox1.setForeground(frame.coloreSecondario);
-    }//GEN-LAST:event_jComboBox1MouseEntered
+    private void jComboBoxTemaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxTemaMouseEntered
+        jComboBoxTema.setForeground(frame.coloreSecondario);        //Hover con mouse, colore secondario
+    }//GEN-LAST:event_jComboBoxTemaMouseEntered
 
-    private void jComboBox1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseExited
-        if(frame.getTema() == ColorMode.SCURO)
+    private void jComboBoxTemaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxTemaMouseExited
+        if(frame.getTema() == ColorMode.SCURO)                      //Resetta a colore normale dopo Hover
         {
-            jComboBox1.setForeground(PaletteColori.BIANCO);
+            jComboBoxTema.setForeground(PaletteColori.BIANCO);
         }
         else
         {
-            jComboBox1.setForeground(PaletteColori.NERO);
+            jComboBoxTema.setForeground(PaletteColori.NERO);
         }
-    }//GEN-LAST:event_jComboBox1MouseExited
+    }//GEN-LAST:event_jComboBoxTemaMouseExited
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        Object sceltaTema = jComboBox1.getSelectedItem();
+    private void jComboBoxTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTemaActionPerformed
+        Object sceltaTema = jComboBoxTema.getSelectedItem();
         String colore = sceltaTema.toString();
-        
+        //Imposta il tema del colore secondario tra le opzioni della combobox
         switch(colore)
         {
             case "BLU":
@@ -331,18 +340,22 @@ public class PnlMenu extends javax.swing.JPanel {
             case "VERDE":
                 frame.coloreSecondario = PaletteColori.VERDE;
                 break;
+            case "ROSSO":
+                frame.coloreSecondario = PaletteColori.ROSSO;
+                break;
             default:
                 frame.coloreSecondario = PaletteColori.VERDE;
                 break;
         }
+        
+        //Aggiorna colore e ridisegna frame
         frame.colorMode();
         frame.repaint();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxTemaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jComboBoxTema;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -354,5 +367,6 @@ public class PnlMenu extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel lblColorMode;
     // End of variables declaration//GEN-END:variables
 }

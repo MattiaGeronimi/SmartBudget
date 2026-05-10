@@ -4,6 +4,7 @@ package codice;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import componenti.PaletteColori;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -30,12 +31,12 @@ public class FrmHome extends javax.swing.JFrame {
     
     public FrmHome() 
     {
-        RegistraFont();     //Metodo per importare i Font 
-        coloreSecondario = PaletteColori.VERDE;
+        RegistraFont();                             //Metodo per importare i Font 
+        coloreSecondario = PaletteColori.VERDE;     //Imposto colore secondario di base
         initComponents();
         
-        this.pack();
-        setTitle("SmartBudget");
+        this.pack();                    //Per fare in modo che la dimensione dela finestra comprendi la barra messa da Windows
+        setTitle("SmartBudget");        //Titolo
         
         jLabel1.setFont(fontSaldo);     //Imposta Font personalizzato al saldo
               
@@ -51,9 +52,9 @@ public class FrmHome extends javax.swing.JFrame {
         BtnMenu.setOpaque(false);      
         
         //Pannello menu
-        menu.setBounds(-200, 100, 200, 700);    //Disegna fuori dallo schermo
-        menu.setVisible(false);                 //Non visibile
-        PnlLayer.add(menu, Integer.valueOf(1)); //In un layer alto
+        menu.setBounds(-200, 100, 200, 700);        //Disegna il menu fuori dallo schermo,
+        menu.setVisible(false);                     //Non visibile,
+        PnlLayer.add(menu, Integer.valueOf(1));     //In un layer alto
         menu.setFrame(this);
         menu.disegnaComboBox(tema);
         menu.setFont();
@@ -61,6 +62,8 @@ public class FrmHome extends javax.swing.JFrame {
         //Imposta modalita di visualizzazione colori
         this.colorMode();
     }
+    
+    
     public void RegistraFont() 
     {
         //Importa i Font non presenti
@@ -77,6 +80,7 @@ public class FrmHome extends javax.swing.JFrame {
         }
     }
     
+    //Imposta i colori seguendo il tema attualmente selezionato
     public void colorMode()
     {
         if(tema == ColorMode.CHIARO)
@@ -84,6 +88,8 @@ public class FrmHome extends javax.swing.JFrame {
             PnlHeader.setBackground(PaletteColori.BIANCO);
             PnlGradient.setColore1(PaletteColori.BIANCO);
             menu.setBackground(PaletteColori.BIANCO);
+            MenuBar.setBackground(PaletteColori.BIANCO);
+            MenuBar.setColoreBordo(PaletteColori.BIANCO);
             menu.setLabelsColor(PaletteColori.NERO);
             jLabel1.setForeground(PaletteColori.NERO);
             BtnMenu.setIcon(new ImageIcon(menuIconScaledDark));
@@ -93,6 +99,8 @@ public class FrmHome extends javax.swing.JFrame {
             PnlHeader.setBackground(PaletteColori.NERO);
             PnlGradient.setColore1(PaletteColori.NERO);
             menu.setBackground(PaletteColori.NERO);
+            MenuBar.setBackground(PaletteColori.NERO);
+            MenuBar.setColoreBordo(PaletteColori.NERO);
             menu.setLabelsColor(PaletteColori.BIANCO);
             jLabel1.setForeground(PaletteColori.BIANCO);
             BtnMenu.setIcon(new ImageIcon(menuIconScaledLight));
@@ -102,6 +110,7 @@ public class FrmHome extends javax.swing.JFrame {
         PnlBottomMenu.setBackground(coloreSecondario);
     }
     
+    //Cambia tema
     public void setTema()
     {
         if(tema == ColorMode.SCURO)
@@ -113,10 +122,13 @@ public class FrmHome extends javax.swing.JFrame {
             tema = ColorMode.SCURO;
         }
     }
+    
+    //Restituisce il tema attualmente selezionato
     public ColorMode getTema()
     {
         return tema;
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,8 +144,9 @@ public class FrmHome extends javax.swing.JFrame {
         PnlHeader = new javax.swing.JPanel();
         BtnMenu = new javax.swing.JButton();
         PnlBottomMenu = new javax.swing.JPanel();
+        MenuBar = new componenti.RoundPanel();
         PnlScheda = new javax.swing.JPanel();
-        PnlGradient = new codice.GradientPanel();
+        PnlGradient = new componenti.GradientPanel();
         PnlSaldo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -188,17 +201,26 @@ public class FrmHome extends javax.swing.JFrame {
         PnlBottomMenu.setMaximumSize(new java.awt.Dimension(420, 100));
         PnlBottomMenu.setMinimumSize(new java.awt.Dimension(420, 100));
         PnlBottomMenu.setPreferredSize(new java.awt.Dimension(420, 100));
+        PnlBottomMenu.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout PnlBottomMenuLayout = new javax.swing.GroupLayout(PnlBottomMenu);
-        PnlBottomMenu.setLayout(PnlBottomMenuLayout);
-        PnlBottomMenuLayout.setHorizontalGroup(
-            PnlBottomMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+        MenuBar.setBackground(new java.awt.Color(0, 0, 0));
+        MenuBar.setMaximumSize(new java.awt.Dimension(380, 80));
+        MenuBar.setMinimumSize(new java.awt.Dimension(380, 80));
+        MenuBar.setPreferredSize(new java.awt.Dimension(380, 80));
+        MenuBar.setRaggio(50);
+
+        javax.swing.GroupLayout MenuBarLayout = new javax.swing.GroupLayout(MenuBar);
+        MenuBar.setLayout(MenuBarLayout);
+        MenuBarLayout.setHorizontalGroup(
+            MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
-        PnlBottomMenuLayout.setVerticalGroup(
-            PnlBottomMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        MenuBarLayout.setVerticalGroup(
+            MenuBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
         );
+
+        PnlBottomMenu.add(MenuBar, new java.awt.GridBagConstraints());
 
         PnlScheda.setLayout(new java.awt.CardLayout());
 
@@ -302,6 +324,7 @@ public class FrmHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuActionPerformed
         
         //Codice che gestisce apertura e chiusura del menu
@@ -310,22 +333,25 @@ public class FrmHome extends javax.swing.JFrame {
         //CHIUSURA
         if(menu.isVisible())
         {    
-            Timer closeTimer = new Timer(5, null);
-            BtnMenu.setEnabled(false);
+            Timer closeTimer = new Timer(5, null);              //Crea timer
+            BtnMenu.setEnabled(false);                          //Disabilita il bottone per evitare che l'utente lo prema durante l'animazione
             closeTimer.addActionListener(e -> {
                 int x = menu.getX();
-                if (x > -200) {
-                    menu.setLocation(x - 10, menu.getY());
-                } else {
-                    menu.setLocation(-200, menu.getY());
-                    closeTimer.stop();
-                    menu.setVisible(false);
-                    BtnMenu.setEnabled(true);
+                if (x > -200)                                   //Fino a quando il menu non arriva a -200
+                {
+                    menu.setLocation(x - 10, menu.getY());      //Sposta a sinistra di 10
+                } 
+                else 
+                {
+                    menu.setLocation(-200, menu.getY());        //Imposta definitivamente posizione a -200
+                    closeTimer.stop();                          //Stop del timer
+                    menu.setVisible(false);                     //Rende il menu invisibile
+                    BtnMenu.setEnabled(true);                   //Riabilita il bottone
                 }
             });
             closeTimer.start();
         }
-        //APERTURA
+        //APERTURA (Come chiusura)
         else
         {
             menu.setVisible(true);
@@ -335,9 +361,12 @@ public class FrmHome extends javax.swing.JFrame {
             {
                 int x = menu.getX();
 
-                if (x < 0) {
+                if (x < 0) 
+                {
                     menu.setLocation(x + 10, menu.getY());
-                } else {
+                } 
+                else 
+                {
                     menu.setLocation(0, menu.getY());
                     BtnMenu.setEnabled(true);
                     openTimer.stop();
@@ -384,17 +413,18 @@ public class FrmHome extends javax.swing.JFrame {
         });
     }
     
-    
-    private ColorMode tema = ColorMode.CHIARO;
+    //Dichiarazioni variabili
+    private ColorMode tema = ColorMode.CHIARO;      
     private PnlMenu menu = new PnlMenu(); 
     public Color coloreSecondario;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnMenu;
+    private componenti.RoundPanel MenuBar;
     private javax.swing.JPanel PnlBottomMenu;
     private javax.swing.JPanel PnlContenuto;
     private javax.swing.JPanel PnlFinestra;
-    private codice.GradientPanel PnlGradient;
+    private componenti.GradientPanel PnlGradient;
     private javax.swing.JPanel PnlHeader;
     private javax.swing.JLayeredPane PnlLayer;
     private javax.swing.JPanel PnlSaldo;
