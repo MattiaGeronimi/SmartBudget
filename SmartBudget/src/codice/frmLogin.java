@@ -525,6 +525,9 @@ public class frmLogin extends javax.swing.JFrame {
         } else if (password.length() >= 25) {
             PasswordInvalida("massimo 25 caratteri");
             return false;
+        } else if (password.contains("\\")) {
+            PasswordInvalida("non può contenere \\");
+            return false;
         } else {
             PasswordValida();
             return true;
@@ -544,7 +547,7 @@ public class frmLogin extends javax.swing.JFrame {
         lblPassword.setText("Password - " + messaggio);
         pswPassword.setIcona(LUCCHETTO_ROSSO);
     }// </editor-fold>
-    
+
     //GESTIONE CONFERMA PASSWORD
     // <editor-fold defaultstate="collapsed">
     public boolean ControlloConfermaPassword() {
@@ -591,16 +594,19 @@ public class frmLogin extends javax.swing.JFrame {
     public Utente getUtente(String username) {
         username = username.toLowerCase();
         ArrayList<Utente> utenti = getListaUtenti();
-        for (int i = 0; i < utenti.size(); i++) {
-            Utente temp = utenti.get(i);
-            if (temp.getUsername().toLowerCase().equals(username)) {
-                return temp;
+        if (utenti != null) {
+            for (int i = 0; i < utenti.size(); i++) {
+                Utente temp = utenti.get(i);
+                if (temp.getUsername().toLowerCase().equals(username)) {
+                    return temp;
+                }
             }
         }
         return null;
     }// </editor-fold>
-    
+
 //REGISTRAZIONE FONT
+    // <editor-fold defaultstate="collapsed">
     public void RegistraFont() {
         try {
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -610,7 +616,7 @@ public class frmLogin extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }// </editor-fold>
 
 //MAIN
     // <editor-fold defaultstate="collapsed">
