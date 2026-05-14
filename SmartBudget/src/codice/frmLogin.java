@@ -115,10 +115,10 @@ public class frmLogin extends javax.swing.JFrame {
         roundButton1.setRaggio(40);
         roundButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                roundButton1MouseEntered(evt);
+                btnGrandiMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                roundButton1MouseExited(evt);
+                btnGrandiMouseExited(evt);
             }
         });
         roundButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,10 +137,10 @@ public class frmLogin extends javax.swing.JFrame {
         roundButton2.setRaggio(40);
         roundButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                roundButton2MouseEntered(evt);
+                btnGrandiMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                roundButton2MouseExited(evt);
+                btnGrandiMouseExited(evt);
             }
         });
         roundButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -339,6 +339,14 @@ public class frmLogin extends javax.swing.JFrame {
         );
         btnRegistrati.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrati.setRaggio(40);
+        btnRegistrati.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseExited(evt);
+            }
+        });
         pnlBottoni.add(btnRegistrati);
 
         btnAnnulla.setForeground(PaletteColori.BLU);
@@ -348,6 +356,19 @@ public class frmLogin extends javax.swing.JFrame {
         btnAnnulla.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
         );
         btnAnnulla.setRaggio(40);
+        btnAnnulla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseExited(evt);
+            }
+        });
+        btnAnnulla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnnullaActionPerformed(evt);
+            }
+        });
         pnlBottoni.add(btnAnnulla);
 
         grdGradiente.add(pnlBottoni, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 420, 170));
@@ -361,33 +382,21 @@ public class frmLogin extends javax.swing.JFrame {
 
 //GESTIONE BOTTONI SCHERMATA WELCOME
     // <editor-fold defaultstate="collapsed">
-    private void roundButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton2MouseExited
+    private void btnGrandiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGrandiMouseExited
         RoundButton bottone = (RoundButton) evt.getSource();
         bottone.setColoreBordo(Color.WHITE);
         bottone.setForeground(PaletteColori.BLU);
-    }//GEN-LAST:event_roundButton2MouseExited
+    }//GEN-LAST:event_btnGrandiMouseExited
 
-    private void roundButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton2MouseEntered
+    private void btnGrandiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGrandiMouseEntered
         RoundButton bottone = (RoundButton) evt.getSource();
         bottone.setColoreBordo(PaletteColori.BLU);
         bottone.setForeground(Color.WHITE);
-    }//GEN-LAST:event_roundButton2MouseEntered
+    }//GEN-LAST:event_btnGrandiMouseEntered
 
     private void roundButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_roundButton2ActionPerformed
-
-    private void roundButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton1MouseExited
-        RoundButton bottone = (RoundButton) evt.getSource();
-        bottone.setColoreBordo(Color.WHITE);
-        bottone.setForeground(PaletteColori.BLU);
-    }//GEN-LAST:event_roundButton1MouseExited
-
-    private void roundButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roundButton1MouseEntered
-        RoundButton bottone = (RoundButton) evt.getSource();
-        bottone.setColoreBordo(PaletteColori.BLU);
-        bottone.setForeground(Color.WHITE);
-    }//GEN-LAST:event_roundButton1MouseEntered
 
     private void roundButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton1ActionPerformed
         cardLayout1.show(getContentPane(), "Registrati");
@@ -459,6 +468,10 @@ public class frmLogin extends javax.swing.JFrame {
     private void pswConfermaPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswConfermaPasswordKeyReleased
         ControlloConfermaPassword();
     }//GEN-LAST:event_pswConfermaPasswordKeyReleased
+
+    private void btnAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullaActionPerformed
+        cardLayout1.show(getContentPane(), "Welcome");
+    }//GEN-LAST:event_btnAnnullaActionPerformed
     // </editor-fold>
 
     //GESTIONE USERNAME
