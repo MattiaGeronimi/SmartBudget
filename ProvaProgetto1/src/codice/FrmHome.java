@@ -8,6 +8,7 @@ import componenti.PaletteColori;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.util.Set;
 
 /**
  *
@@ -123,10 +124,11 @@ public class FrmHome extends javax.swing.JFrame {
         
         jLabel1.setFont(fontSaldo);     //Imposta Font personalizzato al saldo
               
-        //Icona della finestra
+        // <editor-fold defaultstate="collapsed" desc="ICONA DELLA FINESTRA">
         URL iconURL = getClass().getResource("/immagini/icona.png");
         ImageIcon icon = new ImageIcon(iconURL);
         this.setIconImage(icon.getImage());
+        // </editor-fold>
                    
         // <editor-fold defaultstate="collapsed" desc="IMPOSTAZIONE BOTTONI">
         //Bottone Menu
@@ -166,21 +168,41 @@ public class FrmHome extends javax.swing.JFrame {
         BtnProfilo.setOpaque(false); 
         // </editor-fold>
         
+        // <editor-fold defaultstate="collapsed" desc="IMPOSTAZIONE SCROLLPANEL">
+        ScrollPnlTransazioni.getViewport().setOpaque(false);
+        ScrollPnlTransazioni.setViewportBorder(BorderFactory.createEmptyBorder());
+        ScrollPnlTransazioni.setOpaque(false);
+        ScrollPnlTransazioni.setBorder(BorderFactory.createEmptyBorder());
+        ScrollPnlTransazioni.getVerticalScrollBar().setUnitIncrement(10);
+        PnlContainerScroll.setOpaque(false);
+        PnlContainerScroll.setBackground(new Color(0,0,0,0));
+  
+        for(int i = 0; i< 5 ; i++)
+        {
+            PnlTransazione p = new PnlTransazione();
+            PnlContainerScroll.add(p);
+            PnlContainerScroll.add(Box.createRigidArea(new Dimension(0, 9)));   
+        }
+        // </editor-fold>
         
         //Card Layout
         card = (CardLayout) PnlScheda.getLayout();
+
         
-        //IMPOSTAZIONI MENU LATERALE
+        // <editor-fold defaultstate="collapsed" desc="IMPOSTAZIONI MENU LATERALE">
         //Pannello menu
         menu.setBounds(-200, 100, 200, 700);        //Disegna il menu fuori dallo schermo,
         menu.setVisible(false);                     //Non visibile,
         PnlLayer.add(menu, Integer.valueOf(1));     //In un layer alto
         menu.setFrame(this);
-        menu.disegnaComboBox(tema);
+        menu.disegnaComboBox(menu.getjComboBoxTema(), tema);
+        menu.disegnaComboBox(menu.getjComboBoxValuta(), tema);
         menu.setFont();
+        // </editor-fold>
         
         //Imposta modalita di visualizzazione colori
         this.colorMode();
+        
     }
     
     
@@ -200,6 +222,8 @@ public class FrmHome extends javax.swing.JFrame {
         }
     }
     
+    
+    // <editor-fold defaultstate="collapsed" desc="METODO IMPOSTAZIONI COLORMODE">
     //Imposta i colori seguendo il tema attualmente selezionato
     public void colorMode()
     {
@@ -240,8 +264,19 @@ public class FrmHome extends javax.swing.JFrame {
             BtnMeno.setIcon(new ImageIcon(menoIconScaledLight));
             BtnIncrease.setIcon(new ImageIcon(increaseIconScaledLight));
             BtnProfilo.setIcon(new ImageIcon(profileIconScaledLight));
-        }  
-        menu.disegnaComboBox(tema);
+        } 
+        
+        Container sc = (Container) ScrollPnlTransazioni.getViewport().getView();
+        Component[] transazioni = sc.getComponents();
+        
+        for(Component transazione : transazioni)
+        {
+            if (transazione instanceof PnlTransazione)
+                ((PnlTransazione) transazione).setColorMode(this.getTema());
+        }
+        
+        menu.disegnaComboBox(menu.getjComboBoxTema(), tema);
+        menu.disegnaComboBox(menu.getjComboBoxValuta(), tema);
         PnlHome.setColore2(coloreSecondario);
         PnlResoconto.setColore2(coloreSecondario);
         PnlEntrata.setColore2(coloreSecondario);
@@ -249,7 +284,9 @@ public class FrmHome extends javax.swing.JFrame {
         PnlBottomMenu.setBackground(coloreSecondario);
         this.setMenuBarIcon();
     }
+    // </editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="METODO IMPOSTAZIONI ICONE MENUBAR">
     public void setMenuBarIcon()
     {
        
@@ -316,6 +353,7 @@ public class FrmHome extends javax.swing.JFrame {
         
         
     }
+    // </editor-fold>
        
     //Cambia tema
     public void setTema()
@@ -362,6 +400,8 @@ public class FrmHome extends javax.swing.JFrame {
         PnlHome = new componenti.GradientPanel();
         PnlSaldo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        ScrollPnlTransazioni = new javax.swing.JScrollPane();
+        PnlContainerScroll = new javax.swing.JPanel();
         PnlEntrata = new componenti.GradientPanel();
         PnlResoconto = new componenti.GradientPanel();
         PnlSpesa = new componenti.GradientPanel();
@@ -441,7 +481,7 @@ public class FrmHome extends javax.swing.JFrame {
         MenuBar.setMinimumSize(new java.awt.Dimension(380, 80));
         MenuBar.setPreferredSize(new java.awt.Dimension(380, 80));
         MenuBar.setRaggio(50);
-        MenuBar.setLayout(new java.awt.GridLayout());
+        MenuBar.setLayout(new java.awt.GridLayout(1, 0));
 
         BtnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -502,17 +542,28 @@ public class FrmHome extends javax.swing.JFrame {
         jLabel1.setRequestFocusEnabled(false);
         PnlSaldo.add(jLabel1, new java.awt.GridBagConstraints());
 
+        ScrollPnlTransazioni.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ScrollPnlTransazioni.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ScrollPnlTransazioni.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        ScrollPnlTransazioni.setOpaque(false);
+
+        PnlContainerScroll.setOpaque(false);
+        PnlContainerScroll.setLayout(new javax.swing.BoxLayout(PnlContainerScroll, javax.swing.BoxLayout.Y_AXIS));
+        ScrollPnlTransazioni.setViewportView(PnlContainerScroll);
+
         javax.swing.GroupLayout PnlHomeLayout = new javax.swing.GroupLayout(PnlHome);
         PnlHome.setLayout(PnlHomeLayout);
         PnlHomeLayout.setHorizontalGroup(
             PnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PnlSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ScrollPnlTransazioni)
         );
         PnlHomeLayout.setVerticalGroup(
             PnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlHomeLayout.createSequentialGroup()
                 .addComponent(PnlSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 400, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(ScrollPnlTransazioni))
         );
 
         PnlScheda.add(PnlHome, "CardHome");
@@ -632,8 +683,9 @@ public class FrmHome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     
+
+    // <editor-fold defaultstate="collapsed" desc="ACTION PERFORMED SU BOTTONE MENU LATERALE">
     private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuActionPerformed
         
         //Codice che gestisce apertura e chiusura del menu
@@ -682,10 +734,10 @@ public class FrmHome extends javax.swing.JFrame {
                 }
             });
             openTimer.start();
-        }
-        
+        } 
     }//GEN-LAST:event_BtnMenuActionPerformed
-
+    // </editor-fold>
+    
     private void BtnProfiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProfiloActionPerformed
         
     }//GEN-LAST:event_BtnProfiloActionPerformed
@@ -820,6 +872,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JButton BtnProfilo;
     private componenti.RoundPanel MenuBar;
     private javax.swing.JPanel PnlBottomMenu;
+    private javax.swing.JPanel PnlContainerScroll;
     private javax.swing.JPanel PnlContenuto;
     private componenti.GradientPanel PnlEntrata;
     private javax.swing.JPanel PnlFinestra;
@@ -830,6 +883,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JPanel PnlSaldo;
     private javax.swing.JPanel PnlScheda;
     private componenti.GradientPanel PnlSpesa;
+    private javax.swing.JScrollPane ScrollPnlTransazioni;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

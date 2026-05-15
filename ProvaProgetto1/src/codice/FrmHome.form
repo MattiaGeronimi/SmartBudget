@@ -353,14 +353,16 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="PnlSaldo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="PnlSaldo" max="32767" attributes="0"/>
+                              <Component id="ScrollPnlTransazioni" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="PnlSaldo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                  <Component id="ScrollPnlTransazioni" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -412,6 +414,31 @@
                                 </Constraint>
                               </Constraints>
                             </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JScrollPane" name="ScrollPnlTransazioni">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                            <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+                            <Property name="verticalScrollBarPolicy" type="int" value="21"/>
+                            <Property name="opaque" type="boolean" value="false"/>
+                          </Properties>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Container class="javax.swing.JPanel" name="PnlContainerScroll">
+                              <Properties>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+                                <Property name="axis" type="int" value="1"/>
+                              </Layout>
+                            </Container>
                           </SubComponents>
                         </Container>
                       </SubComponents>
