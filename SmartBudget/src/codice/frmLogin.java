@@ -347,10 +347,15 @@ public class frmLogin extends javax.swing.JFrame {
                 btnGrandiMouseExited(evt);
             }
         });
+        btnRegistrati.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistratiActionPerformed(evt);
+            }
+        });
         pnlBottoni.add(btnRegistrati);
 
         btnAnnulla.setForeground(PaletteColori.BLU);
-        btnAnnulla.setText("Anulla");
+        btnAnnulla.setText("Annulla");
         btnAnnulla.setColoreBordo(java.awt.Color.white);
         btnAnnulla.setColoreHover(PaletteColori.BLU);
         btnAnnulla.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
@@ -472,6 +477,14 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullaActionPerformed
         cardLayout1.show(getContentPane(), "Welcome");
     }//GEN-LAST:event_btnAnnullaActionPerformed
+
+    private void btnRegistratiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistratiActionPerformed
+        String username = txtUsername.getText();
+        String password = String.valueOf(pswPassword.getPassword());
+        String confermaPassword = String.valueOf(pswConfermaPassword.getPassword());
+        if(ControlloDatiRegistrati(username, password, confermaPassword))
+            RegistraUtente(username, password);
+    }//GEN-LAST:event_btnRegistratiActionPerformed
     // </editor-fold>
 
     //GESTIONE USERNAME
@@ -566,29 +579,52 @@ public class frmLogin extends javax.swing.JFrame {
     public boolean ControlloConfermaPassword() {
         String password = String.valueOf(pswConfermaPassword.getPassword());
         if (password.equals(PLACEHOLDER_CONFERMA_PASSWORD) || password.isEmpty()) {
-            ControlloPasswordValida();
+            ConfermaPasswordValida();
             return true;
         } else if (!password.equals(String.valueOf(pswPassword.getPassword()))) {
-            ControlloPasswordInvalida("non sono identiche");
+            ConfermaPasswordInvalida("non sono identiche");
             return false;
         } else {
-            ControlloPasswordValida();
+            ConfermaPasswordValida();
             return true;
         }
     }
 
-    public void ControlloPasswordValida() {
+    public void ConfermaPasswordValida() {
         pswConfermaPassword.setColoreBordo(PaletteColori.BLU);
         lblConfermaPassword.setForeground(PaletteColori.BLU);
         lblConfermaPassword.setText("Conferma password");
         pswConfermaPassword.setIcona(SCUDO_BLU);
     }
 
-    public void ControlloPasswordInvalida(String messaggio) {
+    public void ConfermaPasswordInvalida(String messaggio) {
         pswConfermaPassword.setColoreBordo(PaletteColori.ROSSO);
         lblConfermaPassword.setForeground(PaletteColori.ROSSO);
         lblConfermaPassword.setText("Conferma password - " + messaggio);
         pswConfermaPassword.setIcona(SCUDO_ROSSO);
+    }// </editor-fold>
+
+    //CONTROLLO REGISTRAZIONE
+    // <editor-fold defaultstate="collapsed">
+    public boolean ControlloDatiRegistrati(String username, String password, String confermaPassword) {
+        if (ControlloUsername() && ControlloPassword() && ControlloConfermaPassword()) {
+            if (username.equals(PLACEHOLDER_USERNAME) || password.equals(PLACEHOLDER_PASSWORD) || confermaPassword.equals(PLACEHOLDER_CONFERMA_PASSWORD)) {
+                if (username.equals(PLACEHOLDER_USERNAME)) {
+                    UsernameInvalido("campo obbligatorio");
+                }
+                if (password.equals(PLACEHOLDER_PASSWORD)) {
+                    PasswordInvalida("campo obbligatorio");
+                }
+                if (confermaPassword.equals(PLACEHOLDER_CONFERMA_PASSWORD)) {
+                    ConfermaPasswordInvalida("campo obbligatorio");
+                }
+                return false;
+            } else{
+                return true;
+            }
+        } else{
+           return false; 
+        }
     }// </editor-fold>
 
 //GESTIONE UTENTI
@@ -618,6 +654,36 @@ public class frmLogin extends javax.swing.JFrame {
         return null;
     }// </editor-fold>
 
+    //REGISTRA UTENTE
+    // <editor-fold defaultstate="collapsed">
+    public void RegistraUtente(String username, String password){
+        try {
+                ArrayList<Utente> listaUtenti = getListaUtenti();
+                if (listaUtenti == null) {
+                    listaUtenti = new ArrayList<>();
+                }
+                Utente nuovoUtente = new Utente(username, password);
+                listaUtenti.add(nuovoUtente);
+                java.io.FileOutputStream fileOut = new java.io.FileOutputStream("Utenti.dat");
+                java.io.ObjectOutputStream out = new java.io.ObjectOutputStream(fileOut);
+                out.writeObject(listaUtenti);
+                out.close();
+                fileOut.close();
+                txtUsername.setText(PLACEHOLDER_USERNAME);
+                pswPassword.setText(PLACEHOLDER_PASSWORD);
+                pswConfermaPassword.setText(PLACEHOLDER_CONFERMA_PASSWORD);
+                pswPassword.setEchoChar((char) 0);
+                pswConfermaPassword.setEchoChar((char) 0);
+                
+                //CODICE DOPO CHE IL LOGIN VIENE EFFETTUATO CORRETTAMENTE
+                
+                    javax.swing.JOptionPane.showMessageDialog(this, "Registrazione completata con successo!", "Successo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }// </editor-fold>
+    
 //REGISTRAZIONE FONT
     // <editor-fold defaultstate="collapsed">
     public void RegistraFont() {
