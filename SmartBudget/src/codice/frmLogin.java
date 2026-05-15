@@ -81,6 +81,21 @@ public class frmLogin extends javax.swing.JFrame {
         pnlBottoni = new javax.swing.JPanel();
         btnRegistrati = new componenti.RoundButton();
         btnAnnulla = new componenti.RoundButton();
+        pnlLogin = new javax.swing.JPanel();
+        lblIstruzioni1 = new javax.swing.JLabel();
+        pnlDati1 = new javax.swing.JPanel();
+        lblUsernameLogin = new javax.swing.JLabel();
+        txtUsernameLogin = new componenti.RoundTextFieldIcon();
+        flrSpazio3 = new javax.swing.Box.Filler(new java.awt.Dimension(420, 30), new java.awt.Dimension(420, 30), new java.awt.Dimension(420, 30));
+        lblPasswordLogin = new javax.swing.JLabel();
+        pswPasswordLogin = new componenti.RoundPasswordFieldIcon();
+        sprLinea3 = new javax.swing.JSeparator();
+        sprLinea4 = new javax.swing.JSeparator();
+        imgLogo1 = new componenti.ImageLabel();
+        grdGradiente1 = new componenti.GradientPanel();
+        pnlBottoni1 = new javax.swing.JPanel();
+        btnLogin = new componenti.RoundButton();
+        btnAnnulla1 = new componenti.RoundButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SmartBudget");
@@ -382,10 +397,175 @@ public class frmLogin extends javax.swing.JFrame {
 
         getContentPane().add(pnlRegistrati, "Registrati");
 
+        pnlLogin.setBackground(java.awt.Color.white);
+        pnlLogin.setMaximumSize(new java.awt.Dimension(420, 800));
+        pnlLogin.setMinimumSize(new java.awt.Dimension(420, 800));
+        pnlLogin.setPreferredSize(new java.awt.Dimension(420, 800));
+        pnlLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblIstruzioni1.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 15));
+        lblIstruzioni1.setForeground(new java.awt.Color(25, 45, 98));
+        lblIstruzioni1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIstruzioni1.setText("Inserisci i dati per continuare");
+        lblIstruzioni1.setAlignmentX(0.5F);
+        lblIstruzioni1.setPreferredSize(new java.awt.Dimension(37, 50));
+        pnlLogin.add(lblIstruzioni1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 420, 40));
+
+        pnlDati1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));
+        pnlDati1.setOpaque(false);
+        pnlDati1.setLayout(new javax.swing.BoxLayout(pnlDati1, javax.swing.BoxLayout.PAGE_AXIS));
+
+        lblUsernameLogin.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 15)
+        );
+        lblUsernameLogin.setForeground(new java.awt.Color(25, 45, 98));
+        lblUsernameLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblUsernameLogin.setText("Username");
+        lblUsernameLogin.setAlignmentX(0.5F);
+        lblUsernameLogin.setMaximumSize(new java.awt.Dimension(340, 30));
+        lblUsernameLogin.setMinimumSize(new java.awt.Dimension(340, 30));
+        lblUsernameLogin.setPreferredSize(new java.awt.Dimension(340, 30));
+        pnlDati1.add(lblUsernameLogin);
+
+        txtUsernameLogin.setForeground(PaletteColori.BLU_GRIGIO);
+        txtUsernameLogin.setText("Inserisci nome utente...");
+        txtUsernameLogin.setColoreBordo(PaletteColori.BLU);
+        txtUsernameLogin.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 16)
+        );
+        txtUsernameLogin.setIcona(new javax.swing.ImageIcon(getClass().getResource("/immagini/UserBlu.png"))); // NOI18N
+        txtUsernameLogin.setMaximumSize(new java.awt.Dimension(340, 60));
+        txtUsernameLogin.setMinimumSize(new java.awt.Dimension(340, 60));
+        txtUsernameLogin.setPreferredSize(new java.awt.Dimension(340, 60));
+        txtUsernameLogin.setRaggio(40);
+        txtUsernameLogin.setSpazioOccupato(0.48);
+        txtUsernameLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsernameFocusLost(evt);
+            }
+        });
+        txtUsernameLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsernameLoginKeyReleased(evt);
+            }
+        });
+        pnlDati1.add(txtUsernameLogin);
+        pnlDati1.add(flrSpazio3);
+
+        lblPasswordLogin.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 15)
+        );
+        lblPasswordLogin.setForeground(new java.awt.Color(25, 45, 98));
+        lblPasswordLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPasswordLogin.setText("Password");
+        lblPasswordLogin.setAlignmentX(0.5F);
+        lblPasswordLogin.setMaximumSize(new java.awt.Dimension(340, 30));
+        lblPasswordLogin.setMinimumSize(new java.awt.Dimension(340, 30));
+        lblPasswordLogin.setPreferredSize(new java.awt.Dimension(340, 30));
+        pnlDati1.add(lblPasswordLogin);
+
+        pswPasswordLogin.setForeground(PaletteColori.BLU_GRIGIO);
+        pswPasswordLogin.setText("Inserisci password...");
+        pswPasswordLogin.setEchoChar((char) 0);
+        pswPasswordLogin.setFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 16)
+        );
+        pswPasswordLogin.setIcona(new javax.swing.ImageIcon(getClass().getResource("/immagini/LucchettoBlu.png"))); // NOI18N
+        pswPasswordLogin.setMaximumSize(new java.awt.Dimension(340, 60));
+        pswPasswordLogin.setMinimumSize(new java.awt.Dimension(340, 60));
+        pswPasswordLogin.setPreferredSize(new java.awt.Dimension(340, 60));
+        pswPasswordLogin.setRaggio(40);
+        pswPasswordLogin.setSpazioOccupato(0.48);
+        pswPasswordLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pswPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pswPasswordFocusLost(evt);
+            }
+        });
+        pswPasswordLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pswPasswordLoginKeyReleased(evt);
+            }
+        });
+        pnlDati1.add(pswPasswordLogin);
+
+        pnlLogin.add(pnlDati1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 420, 350));
+
+        sprLinea3.setForeground(PaletteColori.BLU);
+        pnlLogin.add(sprLinea3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 330, 20));
+
+        sprLinea4.setForeground(PaletteColori.BLU);
+        pnlLogin.add(sprLinea4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 330, 40));
+
+        imgLogo1.setImmagine("/immagini/logo.png");
+        pnlLogin.add(imgLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 480, 210));
+
+        grdGradiente1.setBackground(java.awt.Color.white);
+        grdGradiente1.setColore1(java.awt.Color.white);
+        grdGradiente1.setColore2(PaletteColori.VERDE);
+        grdGradiente1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlBottoni1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 40, 20));
+        pnlBottoni1.setOpaque(false);
+        pnlBottoni1.setLayout(new java.awt.GridLayout(0, 1, 0, 20));
+
+        btnLogin.setForeground(PaletteColori.BLU);
+        btnLogin.setText("Login");
+        btnLogin.setBorderPainted(true);
+        btnLogin.setColoreBordo(java.awt.Color.white);
+        btnLogin.setColoreHover(PaletteColori.BLU);
+        btnLogin.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
+        );
+        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin.setRaggio(40);
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseExited(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        pnlBottoni1.add(btnLogin);
+
+        btnAnnulla1.setForeground(PaletteColori.BLU);
+        btnAnnulla1.setText("Annulla");
+        btnAnnulla1.setColoreBordo(java.awt.Color.white);
+        btnAnnulla1.setColoreHover(PaletteColori.BLU);
+        btnAnnulla1.setFont(new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 20)
+        );
+        btnAnnulla1.setRaggio(40);
+        btnAnnulla1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGrandiMouseExited(evt);
+            }
+        });
+        btnAnnulla1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnnullaActionPerformed(evt);
+            }
+        });
+        pnlBottoni1.add(btnAnnulla1);
+
+        grdGradiente1.add(pnlBottoni1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 420, 170));
+
+        pnlLogin.add(grdGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 420, 400));
+
+        getContentPane().add(pnlLogin, "Login");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//GESTIONE BOTTONI SCHERMATA WELCOME
+//GESTIONE PANNELLO WELCOME
     // <editor-fold defaultstate="collapsed">
     private void btnGrandiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGrandiMouseExited
         RoundButton bottone = (RoundButton) evt.getSource();
@@ -400,7 +580,7 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGrandiMouseEntered
 
     private void roundButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton2ActionPerformed
-        // TODO add your handling code here:
+        cardLayout1.show(getContentPane(), "Login");
     }//GEN-LAST:event_roundButton2ActionPerformed
 
     private void roundButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton1ActionPerformed
@@ -412,16 +592,18 @@ public class frmLogin extends javax.swing.JFrame {
     //GESTIONE LISTENERS
     // <editor-fold defaultstate="collapsed">
     private void txtUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusGained
-        if (txtUsername.getText().equals(PLACEHOLDER_USERNAME)) {
-            txtUsername.setText("");
-            txtUsername.setForeground(COLORE_FONT);
+        componenti.RoundTextFieldIcon txt = (componenti.RoundTextFieldIcon) evt.getSource();
+        if (txt.getText().equals(PLACEHOLDER_USERNAME)) {
+            txt.setText("");
+            txt.setForeground(COLORE_FONT);
         }
     }//GEN-LAST:event_txtUsernameFocusGained
 
     private void txtUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusLost
-        if (txtUsername.getText().isEmpty()) {
-            txtUsername.setText(PLACEHOLDER_USERNAME);
-            txtUsername.setForeground(COLORE_PLACEHOLDER);
+        componenti.RoundTextFieldIcon txt = (componenti.RoundTextFieldIcon) evt.getSource();
+        if (txt.getText().isEmpty()) {
+            txt.setText(PLACEHOLDER_USERNAME);
+            txt.setForeground(COLORE_PLACEHOLDER);
         }
     }//GEN-LAST:event_txtUsernameFocusLost
 
@@ -430,20 +612,22 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameKeyReleased
 
     private void pswPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswPasswordFocusGained
-        String password = String.valueOf(pswPassword.getPassword());
+        componenti.RoundPasswordFieldIcon psw = (componenti.RoundPasswordFieldIcon) evt.getSource();
+        String password = String.valueOf(psw.getPassword());
         if (password.equals(PLACEHOLDER_PASSWORD)) {
-            pswPassword.setText("");
-            pswPassword.setForeground(COLORE_FONT);
-            pswPassword.setEchoChar('•');
+            psw.setText("");
+            psw.setForeground(COLORE_FONT);
+            psw.setEchoChar('•');
         }
     }//GEN-LAST:event_pswPasswordFocusGained
 
     private void pswPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pswPasswordFocusLost
-        String password = String.valueOf(pswPassword.getPassword());
+        componenti.RoundPasswordFieldIcon psw = (componenti.RoundPasswordFieldIcon) evt.getSource();
+        String password = String.valueOf(psw.getPassword());
         if (password.isEmpty()) {
-            pswPassword.setEchoChar((char) 0);
-            pswPassword.setText(PLACEHOLDER_PASSWORD);
-            pswPassword.setForeground(COLORE_PLACEHOLDER);
+            psw.setEchoChar((char) 0);
+            psw.setText(PLACEHOLDER_PASSWORD);
+            psw.setForeground(COLORE_PLACEHOLDER);
         }
     }//GEN-LAST:event_pswPasswordFocusLost
 
@@ -476,15 +660,47 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullaActionPerformed
         cardLayout1.show(getContentPane(), "Welcome");
+        UsernameValido();
+        txtUsername.setText(PLACEHOLDER_USERNAME);
+        PasswordValida();
+        pswPassword.setText(PLACEHOLDER_PASSWORD);
+        ConfermaPasswordValida();
+        pswConfermaPassword.setText(PLACEHOLDER_CONFERMA_PASSWORD);
+        UsernameValidoLogin();
+        txtUsernameLogin.setText(PLACEHOLDER_USERNAME);
+        PasswordValidaLogin();
     }//GEN-LAST:event_btnAnnullaActionPerformed
 
     private void btnRegistratiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistratiActionPerformed
         String username = txtUsername.getText();
         String password = String.valueOf(pswPassword.getPassword());
         String confermaPassword = String.valueOf(pswConfermaPassword.getPassword());
-        if(ControlloDatiRegistrati(username, password, confermaPassword))
+        if (ControlloDatiRegistrati(username, password, confermaPassword))
             RegistraUtente(username, password);
     }//GEN-LAST:event_btnRegistratiActionPerformed
+    // </editor-fold>
+    
+//GESTIONE PANNELLO LOGIN
+    // <editor-fold defaultstate="collapsed">
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtUsernameLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameLoginKeyReleased
+        String username = txtUsernameLogin.getText();
+        if (username.length() > 25)
+            UsernameInvalidoLogin("massimo 25 caratteri");
+        else
+            UsernameValidoLogin();
+    }//GEN-LAST:event_txtUsernameLoginKeyReleased
+
+    private void pswPasswordLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswPasswordLoginKeyReleased
+        String password = String.valueOf(pswPasswordLogin.getPassword());;
+        if (password.length() > 25)
+            PasswordInvalidaLogin("massimo 25 caratteri");
+        else
+            PasswordValidaLogin();
+    }//GEN-LAST:event_pswPasswordLoginKeyReleased
     // </editor-fold>
 
     //GESTIONE USERNAME
@@ -506,7 +722,7 @@ public class frmLogin extends javax.swing.JFrame {
         } else if (username.contains("\\")) {
             UsernameInvalido("non può contenere \\");
             return false;
-        } else if (username.length() >= 25) {
+        } else if (username.length() > 25) {
             UsernameInvalido("massimo 25 caratteri");
             return false;
         } else {
@@ -522,12 +738,25 @@ public class frmLogin extends javax.swing.JFrame {
         txtUsername.setIcona(USER_BLU);
     }
 
+    public void UsernameValidoLogin() {
+        txtUsernameLogin.setColoreBordo(PaletteColori.BLU);
+        lblUsernameLogin.setForeground(PaletteColori.BLU);
+        lblUsernameLogin.setText("Username");
+        txtUsernameLogin.setIcona(USER_BLU);
+    }
+
     public void UsernameInvalido(String messaggio) {
         txtUsername.setColoreBordo(PaletteColori.ROSSO);
         lblUsername.setForeground(PaletteColori.ROSSO);
         lblUsername.setText("Username - " + messaggio);
         txtUsername.setIcona(USER_ROSSO);
+    }
 
+    public void UsernameInvalidoLogin(String messaggio) {
+        txtUsernameLogin.setColoreBordo(PaletteColori.ROSSO);
+        lblUsernameLogin.setForeground(PaletteColori.ROSSO);
+        lblUsernameLogin.setText("Username - " + messaggio);
+        txtUsernameLogin.setIcona(USER_ROSSO);
     }
 
     public boolean usernameEsistente(String username) {
@@ -548,7 +777,7 @@ public class frmLogin extends javax.swing.JFrame {
         } else if (password.length() < 8) {
             PasswordInvalida("almeno 8 caratteri");
             return false;
-        } else if (password.length() >= 25) {
+        } else if (password.length() > 25) {
             PasswordInvalida("massimo 25 caratteri");
             return false;
         } else if (password.contains("\\")) {
@@ -567,11 +796,26 @@ public class frmLogin extends javax.swing.JFrame {
         pswPassword.setIcona(LUCCHETTO_BLU);
     }
 
+    public void PasswordValidaLogin() {
+        pswPasswordLogin.setColoreBordo(PaletteColori.BLU);
+        lblPasswordLogin.setForeground(PaletteColori.BLU);
+        lblPasswordLogin.setText("Password");
+        pswPasswordLogin.setIcona(LUCCHETTO_BLU);
+    }
+
     public void PasswordInvalida(String messaggio) {
         pswPassword.setColoreBordo(PaletteColori.ROSSO);
         lblPassword.setForeground(PaletteColori.ROSSO);
         lblPassword.setText("Password - " + messaggio);
         pswPassword.setIcona(LUCCHETTO_ROSSO);
+
+    }
+
+    public void PasswordInvalidaLogin(String messaggio) {
+        pswPasswordLogin.setColoreBordo(PaletteColori.ROSSO);
+        lblPasswordLogin.setForeground(PaletteColori.ROSSO);
+        lblPasswordLogin.setText("Password - " + messaggio);
+        pswPasswordLogin.setIcona(LUCCHETTO_ROSSO);
     }// </editor-fold>
 
     //GESTIONE CONFERMA PASSWORD
@@ -619,11 +863,11 @@ public class frmLogin extends javax.swing.JFrame {
                     ConfermaPasswordInvalida("campo obbligatorio");
                 }
                 return false;
-            } else{
+            } else {
                 return true;
             }
-        } else{
-           return false; 
+        } else {
+            return false;
         }
     }// </editor-fold>
 
@@ -656,34 +900,33 @@ public class frmLogin extends javax.swing.JFrame {
 
     //REGISTRA UTENTE
     // <editor-fold defaultstate="collapsed">
-    public void RegistraUtente(String username, String password){
+    public void RegistraUtente(String username, String password) {
         try {
-                ArrayList<Utente> listaUtenti = getListaUtenti();
-                if (listaUtenti == null) {
-                    listaUtenti = new ArrayList<>();
-                }
-                Utente nuovoUtente = new Utente(username, password);
-                listaUtenti.add(nuovoUtente);
-                java.io.FileOutputStream fileOut = new java.io.FileOutputStream("Utenti.dat");
-                java.io.ObjectOutputStream out = new java.io.ObjectOutputStream(fileOut);
-                out.writeObject(listaUtenti);
-                out.close();
-                fileOut.close();
-                txtUsername.setText(PLACEHOLDER_USERNAME);
-                pswPassword.setText(PLACEHOLDER_PASSWORD);
-                pswConfermaPassword.setText(PLACEHOLDER_CONFERMA_PASSWORD);
-                pswPassword.setEchoChar((char) 0);
-                pswConfermaPassword.setEchoChar((char) 0);
-                
-                //CODICE DOPO CHE IL LOGIN VIENE EFFETTUATO CORRETTAMENTE
-                
-                    javax.swing.JOptionPane.showMessageDialog(this, "Registrazione completata con successo!", "Successo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                
-            } catch (Exception e) {
-                e.printStackTrace();
+            ArrayList<Utente> listaUtenti = getListaUtenti();
+            if (listaUtenti == null) {
+                listaUtenti = new ArrayList<>();
             }
+            Utente nuovoUtente = new Utente(username, password);
+            listaUtenti.add(nuovoUtente);
+            java.io.FileOutputStream fileOut = new java.io.FileOutputStream("Utenti.dat");
+            java.io.ObjectOutputStream out = new java.io.ObjectOutputStream(fileOut);
+            out.writeObject(listaUtenti);
+            out.close();
+            fileOut.close();
+            txtUsername.setText(PLACEHOLDER_USERNAME);
+            pswPassword.setText(PLACEHOLDER_PASSWORD);
+            pswConfermaPassword.setText(PLACEHOLDER_CONFERMA_PASSWORD);
+            pswPassword.setEchoChar((char) 0);
+            pswConfermaPassword.setEchoChar((char) 0);
+
+            //CODICE DOPO CHE IL LOGIN VIENE EFFETTUATO CORRETTAMENTE
+            javax.swing.JOptionPane.showMessageDialog(this, "Registrazione completata con successo!", "Successo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }// </editor-fold>
-    
+
 //REGISTRAZIONE FONT
     // <editor-fold defaultstate="collapsed">
     public void RegistraFont() {
@@ -736,32 +979,47 @@ public class frmLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private componenti.RoundButton btnAnnulla;
+    private componenti.RoundButton btnAnnulla1;
+    private componenti.RoundButton btnLogin;
     private componenti.RoundButton btnRegistrati;
     private javax.swing.Box.Filler flrSpazio1;
     private javax.swing.Box.Filler flrSpazio2;
+    private javax.swing.Box.Filler flrSpazio3;
     private componenti.GradientPanel gradientPanel1;
     private componenti.GradientPanel grdGradiente;
+    private componenti.GradientPanel grdGradiente1;
     private componenti.ImageLabel imageLabel1;
     private componenti.ImageLabel imgLogo;
+    private componenti.ImageLabel imgLogo1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblConfermaPassword;
     private javax.swing.JLabel lblIstruzioni;
+    private javax.swing.JLabel lblIstruzioni1;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPasswordLogin;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblUsernameLogin;
     private javax.swing.JPanel pnlBottoni;
+    private javax.swing.JPanel pnlBottoni1;
     private javax.swing.JPanel pnlDati;
+    private javax.swing.JPanel pnlDati1;
+    private javax.swing.JPanel pnlLogin;
     private javax.swing.JPanel pnlRegistrati;
     private javax.swing.JPanel pnlWelcome;
     private componenti.RoundPasswordFieldIcon pswConfermaPassword;
     private componenti.RoundPasswordFieldIcon pswPassword;
+    private componenti.RoundPasswordFieldIcon pswPasswordLogin;
     private componenti.RoundButton roundButton1;
     private componenti.RoundButton roundButton2;
     private javax.swing.JSeparator sprLinea1;
     private javax.swing.JSeparator sprLinea2;
+    private javax.swing.JSeparator sprLinea3;
+    private javax.swing.JSeparator sprLinea4;
     private componenti.RoundTextFieldIcon txtUsername;
+    private componenti.RoundTextFieldIcon txtUsernameLogin;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
 
