@@ -664,11 +664,18 @@ public class frmLogin extends javax.swing.JFrame {
         txtUsername.setText(PLACEHOLDER_USERNAME);
         PasswordValida();
         pswPassword.setText(PLACEHOLDER_PASSWORD);
+        pswPassword.setEchoChar((char) 0);
+        pswPassword.setForeground(COLORE_PLACEHOLDER);
         ConfermaPasswordValida();
         pswConfermaPassword.setText(PLACEHOLDER_CONFERMA_PASSWORD);
+        pswConfermaPassword.setEchoChar((char) 0);
+        pswConfermaPassword.setForeground(COLORE_PLACEHOLDER);
         UsernameValidoLogin();
         txtUsernameLogin.setText(PLACEHOLDER_USERNAME);
         PasswordValidaLogin();
+        pswPasswordLogin.setText(PLACEHOLDER_PASSWORD);
+        pswPasswordLogin.setEchoChar((char) 0);
+        pswPasswordLogin.setForeground(COLORE_PLACEHOLDER);
     }//GEN-LAST:event_btnAnnullaActionPerformed
 
     private void btnRegistratiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistratiActionPerformed
@@ -679,11 +686,14 @@ public class frmLogin extends javax.swing.JFrame {
             RegistraUtente(username, password);
     }//GEN-LAST:event_btnRegistratiActionPerformed
     // </editor-fold>
-    
+
 //GESTIONE PANNELLO LOGIN
     // <editor-fold defaultstate="collapsed">
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        String username = txtUsernameLogin.getText();
+        String password = String.valueOf(pswPasswordLogin.getPassword());
+        if (ControlloDatiLogin(username, password))
+            LoginUtente(username, password);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtUsernameLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameLoginKeyReleased
@@ -713,10 +723,10 @@ public class frmLogin extends javax.swing.JFrame {
         } else if (username.contains(" ")) {
             UsernameInvalido("non può contenere spazi");
             return false;
-        } else if (username.length() <= 3) {
+        } else if (username.length() < 3) {
             UsernameInvalido("almeno 3 caratteri");
             return false;
-        } else if (usernameEsistente(username)) {
+        } else if (UsernameEsistente(username)) {
             UsernameInvalido("già esistente");
             return false;
         } else if (username.contains("\\")) {
@@ -759,7 +769,7 @@ public class frmLogin extends javax.swing.JFrame {
         txtUsernameLogin.setIcona(USER_ROSSO);
     }
 
-    public boolean usernameEsistente(String username) {
+    public boolean UsernameEsistente(String username) {
         return getUtente(username) != null;
     }
     // </editor-fold>
@@ -787,6 +797,11 @@ public class frmLogin extends javax.swing.JFrame {
             PasswordValida();
             return true;
         }
+    }
+
+    public boolean ControlloPassword(String username, String password) {
+        Utente temp = getUtente(username);
+        return password.equals(temp.getPassword());
     }
 
     public void PasswordValida() {
@@ -871,6 +886,33 @@ public class frmLogin extends javax.swing.JFrame {
         }
     }// </editor-fold>
 
+    //CONTROLLO DATI LOGIN
+    // <editor-fold defaultstate="collapsed">
+    public boolean ControlloDatiLogin(String username, String password) {
+        if (UsernameEsistente(username)) {
+            if (username.equals(PLACEHOLDER_USERNAME) || password.equals(PLACEHOLDER_PASSWORD)) {
+                if (username.equals(PLACEHOLDER_USERNAME)) {
+                    UsernameInvalidoLogin("campo obbligatorio");
+                }
+                if (password.equals(PLACEHOLDER_PASSWORD)) {
+                    PasswordInvalidaLogin("campo obbligatorio");
+                }
+                return false;
+            } else {
+                if (ControlloPassword(username, password)) {
+                    return true;
+                }
+                UsernameInvalidoLogin("username o password errati");
+                PasswordInvalidaLogin("username o password errati");
+                return false;
+            }
+        } else {
+            UsernameInvalidoLogin("username o password errati");
+            PasswordInvalidaLogin("username o password errati");
+            return false;
+        }
+    }// </editor-fold>
+
 //GESTIONE UTENTI
     //GET UTENTE
     // <editor-fold defaultstate="collapsed">
@@ -927,6 +969,15 @@ public class frmLogin extends javax.swing.JFrame {
         }
     }// </editor-fold>
 
+    //LOGIN UTENTE
+    // <editor-fold defaultstate="collapsed">
+    private void LoginUtente(String username, String password) {
+        txtUsernameLogin.setText(PLACEHOLDER_USERNAME);
+        pswPasswordLogin.setText(PLACEHOLDER_PASSWORD);
+        pswPasswordLogin.setEchoChar((char) 0);
+        javax.swing.JOptionPane.showMessageDialog(this, "Login completato con successo!", "Successo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }// </editor-fold>
+    
 //REGISTRAZIONE FONT
     // <editor-fold defaultstate="collapsed">
     public void RegistraFont() {
