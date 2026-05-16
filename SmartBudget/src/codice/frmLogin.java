@@ -961,7 +961,7 @@ public class frmLogin extends javax.swing.JFrame {
             pswPassword.setEchoChar((char) 0);
             pswConfermaPassword.setEchoChar((char) 0);
 
-            //CODICE DOPO CHE IL LOGIN VIENE EFFETTUATO CORRETTAMENTE
+            //CODICE DOPO CHE IL REGISTRATI VIENE EFFETTUATO CORRETTAMENTE
             javax.swing.JOptionPane.showMessageDialog(this, "Registrazione completata con successo!", "Successo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception e) {
@@ -975,7 +975,10 @@ public class frmLogin extends javax.swing.JFrame {
         txtUsernameLogin.setText(PLACEHOLDER_USERNAME);
         pswPasswordLogin.setText(PLACEHOLDER_PASSWORD);
         pswPasswordLogin.setEchoChar((char) 0);
+        
+        //CODICE DOPO CHE IL LOGIN VIENE EFFETTUATO CORRETTAMENTE
         javax.swing.JOptionPane.showMessageDialog(this, "Login completato con successo!", "Successo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
     }// </editor-fold>
     
 //REGISTRAZIONE FONT
