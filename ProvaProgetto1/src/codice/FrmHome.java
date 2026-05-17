@@ -8,7 +8,6 @@ import componenti.PaletteColori;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
-import java.util.Set;
 
 /**
  *
@@ -21,8 +20,7 @@ public class FrmHome extends javax.swing.JFrame {
      */
     //Font
     public Font fontSaldo = new java.awt.Font("Montserrat SemiBold", java.awt.Font.PLAIN, 50);
-    private CardLayout card;
-    private String selectedCard = "home";
+    
 
     // <editor-fold defaultstate="collapsed" desc="Import Icone/Immagini">
     //Menu
@@ -206,7 +204,7 @@ public class FrmHome extends javax.swing.JFrame {
     }
     
     
-    public void RegistraFont() 
+    private void RegistraFont() 
     {
         //Importa i Font non presenti
         try 
@@ -223,7 +221,7 @@ public class FrmHome extends javax.swing.JFrame {
     }
     
     
-    // <editor-fold defaultstate="collapsed" desc="METODO IMPOSTAZIONI COLORMODE">
+    // <editor-fold defaultstate="collapsed" desc="METODO IMPOSTAZIONI COLORMODE colorMode()">
     //Imposta i colori seguendo il tema attualmente selezionato
     public void colorMode()
     {
@@ -233,7 +231,7 @@ public class FrmHome extends javax.swing.JFrame {
             PnlHome.setColore1(PaletteColori.BIANCO);
             PnlResoconto.setColore1(PaletteColori.BIANCO);
             PnlEntrata.setColore1(PaletteColori.BIANCO);
-            PnlSpesa.setColore1(PaletteColori.BIANCO);            
+            PnlUscita.setColore1(PaletteColori.BIANCO);            
             menu.setBackground(PaletteColori.BIANCO);
             MenuBar.setBackground(PaletteColori.BIANCO);
             MenuBar.setColoreBordo(PaletteColori.BIANCO);
@@ -252,7 +250,7 @@ public class FrmHome extends javax.swing.JFrame {
             PnlHome.setColore1(PaletteColori.NERO);
             PnlResoconto.setColore1(PaletteColori.NERO);
             PnlEntrata.setColore1(PaletteColori.NERO);
-            PnlSpesa.setColore1(PaletteColori.NERO);    
+            PnlUscita.setColore1(PaletteColori.NERO);    
             menu.setBackground(PaletteColori.NERO);
             MenuBar.setBackground(PaletteColori.NERO);
             MenuBar.setColoreBordo(PaletteColori.NERO);
@@ -280,13 +278,13 @@ public class FrmHome extends javax.swing.JFrame {
         PnlHome.setColore2(coloreSecondario);
         PnlResoconto.setColore2(coloreSecondario);
         PnlEntrata.setColore2(coloreSecondario);
-        PnlSpesa.setColore2(coloreSecondario);
+        PnlUscita.setColore2(coloreSecondario);
         PnlBottomMenu.setBackground(coloreSecondario);
         this.setMenuBarIcon();
     }
     // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="METODO IMPOSTAZIONI ICONE MENUBAR">
+    // <editor-fold defaultstate="collapsed" desc="METODO IMPOSTAZIONI ICONE MENUBAR setMenuBarIcon()">
     public void setMenuBarIcon()
     {
        
@@ -320,7 +318,7 @@ public class FrmHome extends javax.swing.JFrame {
                 BtnPiu.setIcon(new ImageIcon(piuIconScaledVerde));
             }
         }
-        else if (selectedCard == "spesa")
+        else if (selectedCard == "uscita")
         {
             if(coloreSecondario == PaletteColori.ROSSO)
             {
@@ -404,7 +402,7 @@ public class FrmHome extends javax.swing.JFrame {
         PnlContainerScroll = new javax.swing.JPanel();
         PnlEntrata = new componenti.GradientPanel();
         PnlResoconto = new componenti.GradientPanel();
-        PnlSpesa = new componenti.GradientPanel();
+        PnlUscita = new componenti.GradientPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.darkGray);
@@ -604,23 +602,23 @@ public class FrmHome extends javax.swing.JFrame {
 
         PnlScheda.add(PnlResoconto, "CardResoconto");
 
-        PnlSpesa.setColore1(new java.awt.Color(14, 17, 17));
-        PnlSpesa.setColore2(new java.awt.Color(37, 178, 146));
-        PnlSpesa.setMaximumSize(new java.awt.Dimension(420, 600));
-        PnlSpesa.setMinimumSize(new java.awt.Dimension(420, 600));
+        PnlUscita.setColore1(new java.awt.Color(14, 17, 17));
+        PnlUscita.setColore2(new java.awt.Color(37, 178, 146));
+        PnlUscita.setMaximumSize(new java.awt.Dimension(420, 600));
+        PnlUscita.setMinimumSize(new java.awt.Dimension(420, 600));
 
-        javax.swing.GroupLayout PnlSpesaLayout = new javax.swing.GroupLayout(PnlSpesa);
-        PnlSpesa.setLayout(PnlSpesaLayout);
-        PnlSpesaLayout.setHorizontalGroup(
-            PnlSpesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout PnlUscitaLayout = new javax.swing.GroupLayout(PnlUscita);
+        PnlUscita.setLayout(PnlUscitaLayout);
+        PnlUscitaLayout.setHorizontalGroup(
+            PnlUscitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 420, Short.MAX_VALUE)
         );
-        PnlSpesaLayout.setVerticalGroup(
-            PnlSpesaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        PnlUscitaLayout.setVerticalGroup(
+            PnlUscitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        PnlScheda.add(PnlSpesa, "CardSpesa");
+        PnlScheda.add(PnlUscita, "CardUscita");
 
         javax.swing.GroupLayout PnlContenutoLayout = new javax.swing.GroupLayout(PnlContenuto);
         PnlContenuto.setLayout(PnlContenutoLayout);
@@ -742,6 +740,7 @@ public class FrmHome extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnProfiloActionPerformed
 
+    // <editor-fold defaultstate="collapsed" desc="ACTION PERFORMED SU BOTTONE + (ENTRATA)">
     private void BtnPiuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPiuActionPerformed
         card.show(PnlScheda, "CardEntrata");
         if(this.getTema() == ColorMode.CHIARO)
@@ -761,7 +760,9 @@ public class FrmHome extends javax.swing.JFrame {
         selectedCard = "entrata";
         this.setMenuBarIcon();
     }//GEN-LAST:event_BtnPiuActionPerformed
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="ACTION PERFORMED SU BOTTONE HOME">
     private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
         card.show(PnlScheda, "CardHome");
         if(this.getTema() == ColorMode.CHIARO)
@@ -781,9 +782,11 @@ public class FrmHome extends javax.swing.JFrame {
         selectedCard = "home";
         this.setMenuBarIcon();
     }//GEN-LAST:event_BtnHomeActionPerformed
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="ACTION PERFORMED SU BOTTONE - (USCITA)">
     private void BtnMenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenoActionPerformed
-        card.show(PnlScheda, "CardSpesa");
+        card.show(PnlScheda, "CardUscita");
         if(this.getTema() == ColorMode.CHIARO)
         {
             BtnHome.setIcon(new ImageIcon(homeIconScaledDark));
@@ -798,10 +801,12 @@ public class FrmHome extends javax.swing.JFrame {
             BtnMeno.setIcon(new ImageIcon(menoIconScaledLight));
             BtnIncrease.setIcon(new ImageIcon(increaseIconScaledLight));
         }
-        selectedCard = "spesa";
+        selectedCard = "uscita";
         this.setMenuBarIcon();
     }//GEN-LAST:event_BtnMenoActionPerformed
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="ACTION PERFORMED SU BOTTONE RESOCONTO">
     private void BtnIncreaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIncreaseActionPerformed
         card.show(PnlScheda, "CardResoconto");
         if(this.getTema() == ColorMode.CHIARO)
@@ -821,7 +826,8 @@ public class FrmHome extends javax.swing.JFrame {
         selectedCard = "resoconto";
         this.setMenuBarIcon();
     }//GEN-LAST:event_BtnIncreaseActionPerformed
-
+    // </editor-fold>
+    
     /**
      * @param args the command line arguments
      */
@@ -851,6 +857,7 @@ public class FrmHome extends javax.swing.JFrame {
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FrmHome().setVisible(true);
                 
@@ -862,6 +869,9 @@ public class FrmHome extends javax.swing.JFrame {
     private ColorMode tema = ColorMode.CHIARO;      
     private PnlMenu menu = new PnlMenu(); 
     public Color coloreSecondario;
+    private CardLayout card;
+    private String selectedCard = "home";
+    private char valuta = '€';
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnHome;
@@ -882,7 +892,7 @@ public class FrmHome extends javax.swing.JFrame {
     private componenti.GradientPanel PnlResoconto;
     private javax.swing.JPanel PnlSaldo;
     private javax.swing.JPanel PnlScheda;
-    private componenti.GradientPanel PnlSpesa;
+    private componenti.GradientPanel PnlUscita;
     private javax.swing.JScrollPane ScrollPnlTransazioni;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;

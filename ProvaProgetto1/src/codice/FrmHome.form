@@ -511,7 +511,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="componenti.GradientPanel" name="PnlSpesa">
+                    <Container class="componenti.GradientPanel" name="PnlUscita">
                       <Properties>
                         <Property name="colore1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="11" green="11" red="e" type="rgb"/>
@@ -528,7 +528,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                          <CardConstraints cardName="CardSpesa"/>
+                          <CardConstraints cardName="CardUscita"/>
                         </Constraint>
                       </Constraints>
 

@@ -22,12 +22,11 @@ public class PnlMenu extends javax.swing.JPanel {
      */
     public PnlMenu() 
     {
-        initComponents();
-        
+        initComponents(); 
     }
     
     // <editor-fold defaultstate="collapsed" desc="METODO DISEGNA COMBOBOX">
-    public void disegnaComboBox(JComboBox<?> combo, ColorMode tema)
+    public void disegnaComboBox(JComboBox<?> combo, ColorMode tema) //JComboBox<?> serve per prendere una combobox come parametro 
     {
         //Impostazione colori in base al tema
         Color backColor;
