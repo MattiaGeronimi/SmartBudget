@@ -925,9 +925,10 @@ public class frmLogin extends javax.swing.JFrame {
         try {
             FileInputStream file = new FileInputStream("Utenti.dat");
             ObjectInputStream input = new ObjectInputStream(file);
+            ArrayList<Utente> lista = (ArrayList<Utente>) input.readObject();
             input.close();
             file.close();
-            return ((ArrayList<Utente>) input.readObject());
+            return lista;
         } catch (Exception e) {
             return null;
         }
