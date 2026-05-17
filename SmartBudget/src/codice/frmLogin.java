@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 public class frmLogin extends javax.swing.JFrame {
 
 //DICHIARAZIONI
-    //COSTANTI PER PLACEHOLDER SCHERMATA LOGIN/REGISTRATI
+    //COSTANTI PLACEHOLDER
     // <editor-fold defaultstate="collapsed">
     private final Color COLORE_PLACEHOLDER = PaletteColori.BLU_GRIGIO;
     private final Color COLORE_FONT = Color.BLACK;
@@ -36,7 +36,7 @@ public class frmLogin extends javax.swing.JFrame {
     private final ImageIcon ICONA_APP = new ImageIcon(getClass().getResource("/immagini/icona.png"));
     // </editor-fold>
 
-    //CREA IL CARD LAYOUT
+    //CREAZIONE CARD LAYOUT
     java.awt.CardLayout cardLayout1 = null;
 
 //COSTRUTTORE FRAME
@@ -565,7 +565,8 @@ public class frmLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//GESTIONE PANNELLO WELCOME
+//LISTENERS
+    //LISTENERS BOTTONI 1
     // <editor-fold defaultstate="collapsed">
     private void btnGrandiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGrandiMouseExited
         RoundButton bottone = (RoundButton) evt.getSource();
@@ -588,8 +589,7 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_roundButton1ActionPerformed
     // </editor-fold>
 
-//GESTIONE PANNELLO REGISTRAZIONE
-    //GESTIONE LISTENERS
+    //LISTENERS TEXTFIELDS E PASSWORDFIELDS
     // <editor-fold defaultstate="collapsed">
     private void txtUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusGained
         componenti.RoundTextFieldIcon txt = (componenti.RoundTextFieldIcon) evt.getSource();
@@ -657,7 +657,10 @@ public class frmLogin extends javax.swing.JFrame {
     private void pswConfermaPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswConfermaPasswordKeyReleased
         ControlloConfermaPassword();
     }//GEN-LAST:event_pswConfermaPasswordKeyReleased
-
+// </editor-fold>
+    
+    //LISTENERS BOTTONI 2
+    // <editor-fold defaultstate="collapsed">
     private void btnAnnullaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnullaActionPerformed
         cardLayout1.show(getContentPane(), "Welcome");
         UsernameValido();
@@ -685,17 +688,17 @@ public class frmLogin extends javax.swing.JFrame {
         if (ControlloDatiRegistrati(username, password, confermaPassword))
             RegistraUtente(username, password);
     }//GEN-LAST:event_btnRegistratiActionPerformed
-    // </editor-fold>
-
-//GESTIONE PANNELLO LOGIN
-    // <editor-fold defaultstate="collapsed">
+    
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String username = txtUsernameLogin.getText();
         String password = String.valueOf(pswPasswordLogin.getPassword());
         if (ControlloDatiLogin(username, password))
             LoginUtente(username, password);
     }//GEN-LAST:event_btnLoginActionPerformed
-
+    // </editor-fold>
+    
+    //KEY LISTENERS LOGIN
+    // <editor-fold defaultstate="collapsed">
     private void txtUsernameLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameLoginKeyReleased
         String username = txtUsernameLogin.getText();
         if (username.length() > 25)
@@ -713,6 +716,7 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_pswPasswordLoginKeyReleased
     // </editor-fold>
 
+//GESTIONE DATI
     //GESTIONE USERNAME
     // <editor-fold defaultstate="collapsed">
     public boolean ControlloUsername() {
@@ -863,7 +867,7 @@ public class frmLogin extends javax.swing.JFrame {
         pswConfermaPassword.setIcona(SCUDO_ROSSO);
     }// </editor-fold>
 
-    //CONTROLLO REGISTRAZIONE
+    //CONTROLLO DATI REGISTRAZIONE
     // <editor-fold defaultstate="collapsed">
     public boolean ControlloDatiRegistrati(String username, String password, String confermaPassword) {
         if (ControlloUsername() && ControlloPassword() && ControlloConfermaPassword()) {
@@ -981,7 +985,7 @@ public class frmLogin extends javax.swing.JFrame {
         
     }// </editor-fold>
     
-//REGISTRAZIONE FONT
+//CONFIGURAZIONE FONT
     // <editor-fold defaultstate="collapsed">
     public void RegistraFont() {
         try {
